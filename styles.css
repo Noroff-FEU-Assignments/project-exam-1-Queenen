@@ -121,6 +121,7 @@ header {
   justify-content: space-between;
   position: absolute;
   align-items: center;
+  width: 100%;
 }
 
 header > * {
