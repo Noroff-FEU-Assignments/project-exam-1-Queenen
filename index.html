@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vivid Escapes, traveling made easy!" />
+    <title>Home | Vivid Escapes</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script defer src="/js/script.js" type="text/javascript"></script>
+    <script defer src="/js/index.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <header>
+      <img
+        src="/images/logo/vivid-escapes_logo.PNG"
+        alt="vivid escapes logo"
+        class="logo" />
+      <img
+        src="/images/icons/menu.svg"
+        alt="open menu"
+        class="icon open_menu" />
+      <img
+        src="/images/icons/cross.svg"
+        alt="close menu"
+        class="icon close_menu" />
+      <nav>
+        <a href="guides.html">GUIDES</a>
+        <a href="reviews.html">REVIEWS</a>
+        <a href="promos.html">PROMOS</a>
+      </nav>
+    </header>
+    <section class="index_hero">
+      <img
+        src="/images/background/index.jpg"
+        alt="woman photographing the viewer"
+        class="hero_img" />
+    </section>
+    <section class="subscribe">
+      <div class="sub_input">
+        <div>
+          <p class="error i_name_error">
+            Please enter at least 5 characters in the field
+          </p>
+          <label for="name">Name</label>
+          <input type="text" id="name" required />
+        </div>
+        <div>
+          <p class="error i_email_error">Please enter a valid email adress</p>
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+      </div>
+      <div class="sub_info">
+        <p class="brown">Don't miss out on the newest posts!</p>
+        <button type="submit" class="pointer subscribe_button">
+          Subscribe
+        </button>
+      </div>
+    </section>
+    <section class="slider">
+      <h2>Latest posts</h2>
+      <img
+        src="/images/icons/arrow-left-circle.svg"
+        alt="view less posts"
+        class="icon slide_left pointer" />
+      <img
+        src="/images/icons/arrow-right-circle.svg"
+        alt="view more posts"
+        class="icon slide_right pointer" />
+      <div class="slider_container">
+        <a href="" class="slide">
+          <img
+            src="/images/posts/review/osaka.jpg"
+            alt="sakura trees blooming in Osaka, Japan"
+            class="slider_img" />
+          <p><span class="bold">Review: </span>Visiting Osaka in Japan</p>
+        </a>
+        <a href="" class="slide">
+          <img
+            src="/images/posts/guide/japan_culture.jpg"
+            alt="woman wearing a kimono"
+            class="slider_img" />
+          <p>
+            <span class="bold">Guide: </span>12 manners that's frowned upon in
+            Japan
+          </p>
+        </a>
+        <a href="" class="slide">
+          <img
+            src="/images/posts/guide/santorini.jpg"
+            alt="view of Santorini, in Greece"
+            class="slider_img" />
+          <p>
+            <span class="bold">Guide: </span>11 exciting to-do's in Santorini
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <a href="contact.html">CONTACT ME</a>
+        <a href="about.html">ABOUT ME</a>
+      </div>
+      <p>© Vivid Escapes. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
