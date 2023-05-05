@@ -201,7 +201,6 @@ header nav a {
 /*slider section*/
 .slider {
   padding: 4rem;
-  overflow-x: hidden;
   position: relative;
 }
 
