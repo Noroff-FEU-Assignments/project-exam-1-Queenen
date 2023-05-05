@@ -365,4 +365,20 @@ footer p {
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media screen and (min-width: 1200px) {
+  p,
+  label,
+  input,
+  button {
+    font-size: 1.8rem;
+  }
+  a,
+  h3 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 2.2rem;
+  }
+  h1 {
+    font-size: 2.4rem;
+  }
 }
