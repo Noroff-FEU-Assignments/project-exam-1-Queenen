@@ -23,10 +23,12 @@
   </head>
   <body>
     <header>
-      <img
-        src="/images/logo/vivid-escapes_logo.PNG"
-        alt="vivid escapes logo"
-        class="logo" />
+      <a href="index.html"
+        ><img
+          src="/images/logo/vivid-escapes_logo.PNG"
+          alt="vivid escapes logo"
+          class="logo"
+      /></a>
       <img
         src="/images/icons/menu.svg"
         alt="open menu"
@@ -41,9 +43,9 @@
         <a href="promos.html">PROMOS</a>
       </nav>
     </header>
-    <section class="index_hero">
+    <section class="hero">
       <img
-        src="/images/background/index.jpg"
+        src="/images/hero/index.jpg"
         alt="woman photographing the viewer"
         class="hero_img" />
     </section>
@@ -69,43 +71,47 @@
         </button>
       </div>
     </section>
-    <section class="slider">
+    <section class="index_posts">
       <h2>Latest posts</h2>
-      <img
-        src="/images/icons/arrow-left-circle.svg"
-        alt="view less posts"
-        class="icon slide_left pointer" />
-      <img
-        src="/images/icons/arrow-right-circle.svg"
-        alt="view more posts"
-        class="icon slide_right pointer" />
-      <div class="slider_container">
-        <a href="" class="slide" style="display: none">
+      <div class="post_container">
+        <a href="" class="slide">
           <img
             src="/images/posts/review/osaka.jpg"
-            alt="sakura trees blooming in Osaka, Japan"
-            class="slider_img" />
-          <p><span class="bold">Review: </span>Visiting Osaka in Japan</p>
+            alt="osaka"
+            class="slide_img" />
+          <p class="bold">Visiting Osaka in Japan</p>
+          <p>
+            Eget mauris pharetra et ultrices neque ornare aenean. Fringilla ut
+            morbi tincidunt augue...
+          </p>
         </a>
-        <a href="" class="slide" style="display: none">
+        <a href="" class="slide slide_2">
           <img
             src="/images/posts/guide/japan_culture.jpg"
             alt="woman wearing a kimono"
-            class="slider_img" />
+            class="slide_img" />
+          <p class="bold">12 manners that's frowned upon in Japan</p>
           <p>
-            <span class="bold">Guide: </span>12 manners that's frowned upon in
-            Japan
+            Magna etiam tempor orci eu lobortis elementum nibh tellus
+            molestie...
           </p>
         </a>
-        <a href="" class="slide">
+        <a href="" class="slide slide_3">
           <img
             src="/images/posts/guide/santorini.jpg"
-            alt="view of Santorini, in Greece"
-            class="slider_img" />
+            alt="view of Santorini in Greece"
+            class="slide_img" />
+          <p class="bold">10 exciting to-do’s in Santorini</p>
           <p>
-            <span class="bold">Guide: </span>11 exciting to-do's in Santorini
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua...
           </p>
         </a>
+      </div>
+      <div class="progress_bar">
+        <div class="dot dot-1 pointer selected"></div>
+        <div class="dot dot-2 pointer"></div>
+        <div class="dot dot-3 pointer"></div>
       </div>
     </section>
 

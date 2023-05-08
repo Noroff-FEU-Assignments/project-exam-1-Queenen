@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Yes to cheaper travels!" />
-    <title>Promos | Vivid Escapes</title>
+    <meta name="description" content="Vivid Escapes, traveling made easy!" />
+    <title>About | Vivid Escapes</title>
     <link rel="stylesheet" href="styles.css" />
     <script defer src="/js/script.js" type="text/javascript"></script>
+    <script defer src="/js/contact.js" type="text/javascript"></script>
     <!-- Hotjar Tracking Code for Vivid Escapes
 <script>
     (function(h,o,t,j,a,r){
@@ -43,45 +44,43 @@
       </nav>
     </header>
     <section class="hero">
-      <h1 class="hero_title">PROMOS</h1>
+      <h1 class="hero_title">CONTACT</h1>
       <img
-        src="/images/hero/promo.jpg"
-        alt="couple having a city vacation"
+        src="/images/hero/contact.jpg"
+        alt="small cottage in the sunset"
         class="hero_img" />
     </section>
-    <section class="promo_info">
-      <h2>CHEAPER TRAVELS?</h2>
-      <h3>Yes, please!</h3>
-      <p>Here are some promotional codes for an enhanced travel experience!</p>
+    <section class="contact_intro">
+      <h2>ASK AWAY</h2>
+      <p>
+        Planning a trip in the future? Feel free to ask me for advice, I'd love
+        to give you some recommendations!
+      </p>
     </section>
-    <section class="promo_section">
-      <div class="coupon">
-        <a href="https://www.hotels.com/"
-          ><img
-            src="/images/logo/hotels_logo.png"
-            alt="hotels.com logo"
-            class="promo_logo"
-        /></a>
-        <div>
-          <h3 class="green">25% OFF HOTEL ROOMS</h3>
-          <h3>with "VE-SPRING2023"</h3>
-          <p>eligible until 12th May, 2023</p>
-        </div>
+    <form class="contact_form">
+      <h2>CONTACT</h2>
+      <div>
+        <label for="c_name">Full name</label>
+        <p class="error c_name_error">Please enter at least 5 characters</p>
+        <input type="text" id="c_name" required />
       </div>
-      <div class="coupon">
-        <a href="https://www.flysas.com/en/"
-          ><img
-            src="/images/logo//sas_logo.png"
-            alt="sas logo"
-            class="promo_logo"
-        /></a>
-        <div>
-          <h3 class="green">20% OFF EUROPE FLIGHTS</h3>
-          <h3>with "VE-FLIGHT2023"</h3>
-          <p>eligible until 28th May, 2023</p>
-        </div>
+      <div>
+        <label for="c_email">Email</label>
+        <p class="error c_email_error">Please enter a valid email adress</p>
+        <input type="email" id="c_email" required />
       </div>
-    </section>
+      <div>
+        <label for="c_subject">Subject</label>
+        <p class="error c_subject_error">Please enter at least 15 characters</p>
+        <input type="text" id="c_subject" required />
+      </div>
+      <div>
+        <label for="c_message">Message</label>
+        <p class="error c_message_error">Please enter at least 25 characters</p>
+        <textarea id="c_message"></textarea>
+      </div>
+      <button type="submit" class="c_button">SEND MESSAGE</button>
+    </form>
 
     <footer>
       <div>

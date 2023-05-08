@@ -15,6 +15,7 @@ html {
   --button: #ffac30;
   --button-hover: #de651b;
   --brown: #a65519;
+  --light-gray: rgb(236, 236, 236);
 }
 
 @font-face {
@@ -44,7 +45,8 @@ body {
 p,
 label,
 input,
-button {
+button,
+textarea {
   font-size: 1.4rem;
 }
 
@@ -61,11 +63,12 @@ h2 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  color: white;
 }
 
 .icon {
-  width: 5%;
+  width: 2rem;
 }
 
 .hero_img {
@@ -78,8 +81,14 @@ h1 {
   color: var(--brown);
 }
 
-.bold {
+.bold,
+label {
   font-family: "Lato_bold";
+}
+
+input,
+textarea {
+  font-family: "Lato";
 }
 
 .italic {
@@ -105,7 +114,13 @@ button {
   font-family: "Lato";
 }
 
-.pointer:hover {
+.green {
+  color: green;
+}
+
+.pointer:hover,
+.open_menu:hover,
+.close_menu:hover {
   cursor: pointer;
 }
 
@@ -122,14 +137,12 @@ header {
   position: absolute;
   align-items: center;
   width: 100%;
-}
-
-header > * {
-  cursor: pointer;
+  z-index: 3;
 }
 
 .logo {
-  width: 50%;
+  margin-top: 0.5rem;
+  width: 60%;
 }
 
 header nav {
@@ -139,12 +152,25 @@ header nav {
   text-align: right;
   top: 90%;
   right: 0;
+  z-index: 2;
 }
 
 header nav a {
   margin: 0.5rem 0;
   padding: 0.5rem 3rem 0.5rem 5rem;
   text-shadow: 4px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.hero {
+  position: relative;
+}
+
+.hero_title {
+  position: absolute;
+  font-family: "Ledger";
+  right: -10%;
+  top: 90%;
+  transform: translate(-50%, -50%);
 }
 
 /* INDEX */
@@ -200,58 +226,70 @@ header nav a {
 }
 
 /*slider section*/
-.slider {
+.index_posts {
   padding: 4rem;
-  position: relative;
 }
 
-.slider a:hover {
+.index_posts h2 {
+  margin-bottom: 4rem;
+}
+.post_container {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.slide {
+  width: 80%;
+  height: 35rem;
+  font-family: "Lato";
+  border-radius: 2rem;
+  border: 2px solid lightgrey;
+  line-height: 2rem;
+}
+
+.slide:hover {
   text-decoration: none;
 }
 
-.slider h2 {
-  margin-bottom: 4rem;
-}
-
-.slider_container {
-  display: flex;
-}
-
-.slider_img {
-  height: 25rem;
-  width: 20rem;
+.slide_img {
+  border-radius: 2rem 2rem 0 0;
+  width: 100%;
   object-fit: cover;
-  border-radius: 1rem;
-  margin-right: 3rem;
 }
 
-.slider p {
-  width: 20rem;
-  font-family: "Lato";
+.slide p {
+  padding: 1.5rem 2rem 0 2rem;
 }
 
-.slide_left,
-.slide_right {
-  position: absolute;
-  width: 3rem;
-  opacity: 0.4;
-  padding: 10rem 0;
-  z-index: 5;
+.slide p:last-of-type {
+  padding-bottom: 3rem;
 }
 
-.slide_left:hover,
-.slide_right:hover {
-  opacity: 1;
+.slide_2,
+.slide_3 {
+  display: none;
 }
 
-.slide_left {
-  top: 25%;
-  left: 5rem;
+.progress_bar {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
 }
 
-.slide_right {
-  top: 25%;
-  right: 5rem;
+.dot {
+  background-color: lightgrey;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.dot-2 {
+  margin: 0 3rem 0 3rem;
+}
+
+.selected {
+  background-color: gray;
 }
 
 /* LOADER */
@@ -308,24 +346,138 @@ footer p {
   margin-top: 3rem;
 }
 
+/* PROMOS */
+
+.promo_info {
+  padding: 5rem;
+  line-height: 2rem;
+  background-color: whitesmoke;
+}
+.promo_info h2 {
+  font-family: "Ledger";
+  margin-bottom: 2rem;
+}
+
+.promo_info h3,
+.promo_section h3 {
+  font-family: "Lato_bold";
+  margin-bottom: 2rem;
+}
+
+.coupon {
+  padding: 5rem 3rem;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.coupon:nth-child(odd) {
+  border-bottom: 0.2rem solid whitesmoke;
+}
+
+.coupon div {
+  width: 60%;
+}
+
+.promo_logo {
+  width: 10rem;
+  align-self: center;
+  margin-right: 2rem;
+}
+
+/* about */
+.about_introduction,
+.about_info {
+  padding: 5rem 25%;
+  line-height: 2rem;
+}
+
+.about_introduction {
+  border-bottom: 0.2rem solid whitesmoke;
+}
+
+.about_introduction h3:nth-child(2),
+.about_info p.bold {
+  margin-bottom: 2rem;
+}
+
+/* contact */
+.contact_intro {
+  padding: 5rem 25%;
+  line-height: 2.5rem;
+  border-bottom: 2px solid whitesmoke;
+}
+
+.contact_intro h2 {
+  font-family: "Ledger";
+  margin-bottom: 2rem;
+}
+
+.contact_form h2 {
+  font-family: "Ledger";
+  margin-bottom: 5rem;
+}
+
+.contact_form {
+  padding: 5rem 25%;
+}
+
+.contact_form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact_form label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.contact_form input,
+.contact_form textarea {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-style: none;
+  background-color: whitesmoke;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.contact_form button {
+  padding: 1rem;
+}
+
+.contact_form textarea {
+  resize: none;
+  height: 100px;
+  margin-bottom: 3rem;
+}
+
+.message_sent {
+  padding: 2rem 0;
+}
+
+.message_sent h2 {
+  margin-bottom: 2rem;
+}
+
 /* MEDIA QUERIES */
 
 /*Small devices (landscape phones, 576px and up)*/
 @media screen and (min-width: 576px) {
-  /*p,
-  label,
-  button {
-    font-size: 16px;
+  .coupon div {
+    text-align: right;
   }
-  a {
-    font-size: 18px;
+  .icon {
+    width: 4.5rem;
   }
-  h1 {
-    font-size: 20px;
+  .logo {
+    width: 40%;
   }
-  h1 {
-    font-size: 22px;
-  }*/
+  .slide {
+    width: 40%;
+  }
+  .slide_2 {
+    display: block;
+  }
 }
 
 /*Medium devices (tablets, 768px and up) */
@@ -333,7 +485,8 @@ footer p {
   p,
   label,
   input,
-  button {
+  button,
+  textarea {
     font-size: 1.6rem;
   }
   a,
@@ -344,7 +497,7 @@ footer p {
     font-size: 2rem;
   }
   h1 {
-    font-size: 2.2rem;
+    font-size: 3rem;
   }
 
   header nav a {
@@ -354,12 +507,34 @@ footer p {
   .sub_input label {
     width: 15%;
   }
+  .promo_logo {
+    width: 15rem;
+  }
+  .about_introduction,
+  .about_info {
+    padding: 5rem 30%;
+  }
+  .hero_img,
+  .hero {
+    height: 400px;
+    object-fit: cover;
+  }
+  .slide {
+    width: 25%;
+  }
+  .slide_3 {
+    display: block;
+  }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media screen and (min-width: 992px) {
   .subscribe {
     padding: 2rem 10rem;
+  }
+  .contact_form,
+  .contact_intro {
+    padding: 5rem 35%;
   }
 }
 
@@ -368,7 +543,8 @@ footer p {
   p,
   label,
   input,
-  button {
+  button,
+  textarea {
     font-size: 1.8rem;
   }
   a,
@@ -379,6 +555,6 @@ footer p {
     font-size: 2.2rem;
   }
   h1 {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
   }
 }
