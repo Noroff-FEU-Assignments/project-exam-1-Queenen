@@ -128,6 +128,10 @@ a:hover {
   text-decoration: line-through;
 }
 
+hr {
+  border: 1.5px solid whitesmoke;
+}
+
 /* HEADER */
 
 header {
@@ -168,9 +172,9 @@ header nav a {
 .hero_title {
   position: absolute;
   font-family: "Ledger";
-  right: -10%;
+  right: 0;
   top: 90%;
-  transform: translate(-50%, -50%);
+  transform: translate(-25%, -50%);
 }
 
 /* INDEX */
@@ -179,46 +183,47 @@ header nav a {
 
 .subscribe {
   font-family: "Lato_bold";
-  padding: 2rem 3rem;
+  padding: 2rem;
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
   background-color: var(--navigation);
-  align-items: center;
-  height: 14rem;
 }
 
 .sub_input {
-  width: 60%;
+  width: 70%;
 }
 
-.sub_info {
-  width: 30%;
+.sub_input input {
+  padding: 0.25rem;
+  border-style: none;
+  border-radius: 0.5rem;
 }
 
 .sub_input label {
   display: inline-block;
-  width: 25%;
+  width: 20%;
 }
 
-.sub_input input {
-  width: 65%;
-  border-style: none;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-}
-
-.sub_input div:first-child,
-.sub_info p {
+.sub_name {
   margin-bottom: 1rem;
 }
+
+.sub_info p {
+  margin-bottom: 1.4rem;
+}
+
+.sub_info {
+  width: auto;
+}
+
+/**/
 
 .subscribed {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
   text-align: center;
+  padding: 0.5rem;
 }
 
 .subscribed p:first-child {
@@ -388,12 +393,11 @@ footer p {
 /* about */
 .about_introduction,
 .about_info {
-  padding: 5rem 25%;
+  max-width: 25rem;
+  padding: 5rem 0;
+  display: block;
+  margin: 0 auto;
   line-height: 2rem;
-}
-
-.about_introduction {
-  border-bottom: 0.2rem solid whitesmoke;
 }
 
 .about_introduction h3:nth-child(2),
@@ -403,9 +407,15 @@ footer p {
 
 /* contact */
 .contact_intro {
-  padding: 5rem 25%;
+  padding: 5rem;
   line-height: 2.5rem;
-  border-bottom: 2px solid whitesmoke;
+  background-color: whitesmoke;
+}
+
+.contact_intro > * {
+  max-width: 25rem;
+  display: block;
+  margin: 0 auto;
 }
 
 .contact_intro h2 {
@@ -419,7 +429,9 @@ footer p {
 }
 
 .contact_form {
-  padding: 5rem 25%;
+  display: block;
+  margin: 5rem auto;
+  max-width: 25rem;
 }
 
 .contact_form div {
@@ -461,6 +473,15 @@ footer p {
 
 /* MEDIA QUERIES */
 
+@media screen and (min-width: 450px) {
+  .slide {
+    width: 40%;
+  }
+  .slide_2 {
+    display: block;
+  }
+}
+
 /*Small devices (landscape phones, 576px and up)*/
 @media screen and (min-width: 576px) {
   .coupon div {
@@ -472,10 +493,16 @@ footer p {
   .logo {
     width: 40%;
   }
-  .slide {
-    width: 40%;
+  .sub_input input {
+    width: 70%;
   }
-  .slide_2 {
+  .subscribe {
+    padding: 2rem 20%;
+  }
+  .slide {
+    width: 30%;
+  }
+  .slide_3 {
     display: block;
   }
 }
@@ -503,39 +530,47 @@ footer p {
   header nav a {
     margin: 1.5rem 0;
   }
-
-  .sub_input label {
-    width: 15%;
-  }
   .promo_logo {
     width: 15rem;
-  }
-  .about_introduction,
-  .about_info {
-    padding: 5rem 30%;
   }
   .hero_img,
   .hero {
     height: 400px;
     object-fit: cover;
   }
-  .slide {
-    width: 25%;
+  .sub_input input {
+    width: 70%;
   }
-  .slide_3 {
-    display: block;
+  .sub_input {
+    margin-right: 1rem;
+  }
+  .sub_info {
+    width: 40%;
+    margin-top: -0.25rem;
+  }
+  .sub_input label {
+    margin-right: 1rem;
+  }
+  .subscribe {
+    padding: 2rem;
+  }
+  .subscribe {
+    position: absolute;
+    right: 0;
+    top: 300px;
+    width: 50%;
+    border-top-left-radius: 2rem;
+  }
+  .contact_intro > *,
+  .contact_form,
+  .about_introduction,
+  .about_info {
+    max-width: 40rem;
   }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media screen and (min-width: 992px) {
-  .subscribe {
-    padding: 2rem 10rem;
-  }
-  .contact_form,
-  .contact_intro {
-    padding: 5rem 35%;
-  }
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
