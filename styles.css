@@ -358,6 +358,12 @@ footer p {
   line-height: 2rem;
   background-color: whitesmoke;
 }
+
+.promo_info > * {
+  display: block;
+  margin: 0 auto;
+  max-width: 25rem;
+}
 .promo_info h2 {
   font-family: "Ledger";
   margin-bottom: 2rem;
@@ -564,7 +570,8 @@ footer p {
   .contact_intro > *,
   .contact_form,
   .about_introduction,
-  .about_info {
+  .about_info,
+  .promo_info > * {
     max-width: 40rem;
   }
 }
