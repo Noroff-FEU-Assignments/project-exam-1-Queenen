@@ -93,9 +93,11 @@ textarea {
 
 .italic {
   font-family: "Lato_italic";
+  color: var(--button);
 }
 
-button {
+button,
+.button {
   width: 100%;
   padding: 0.5rem;
   border-style: none;
@@ -112,6 +114,10 @@ button {
   color: red;
   font-size: 1.2rem;
   font-family: "Lato";
+}
+
+.smaller {
+  font-size: 1.2rem;
 }
 
 .green {
@@ -233,6 +239,7 @@ header nav a {
 /*slider section*/
 .index_posts {
   padding: 4rem;
+  background-color: whitesmoke;
 }
 
 .index_posts h2 {
@@ -249,8 +256,8 @@ header nav a {
   height: 35rem;
   font-family: "Lato";
   border-radius: 2rem;
-  border: 2px solid lightgrey;
   line-height: 2rem;
+  background-color: white;
 }
 
 .slide:hover {
@@ -477,6 +484,27 @@ footer p {
   margin-bottom: 2rem;
 }
 
+/* REVIEWS */
+.reviews {
+  background-color: whitesmoke;
+  padding: 5rem;
+}
+
+.reviews .slide {
+  height: 45rem;
+}
+
+.review_info {
+  margin-top: -2.5rem;
+}
+
+.reviews .button {
+  display: block;
+  margin: 2rem;
+  text-align: center;
+  width: 80%;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 450px) {
@@ -515,6 +543,10 @@ footer p {
 
 /*Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
+  .error,
+  .smaller {
+    font-size: 1.4rem;
+  }
   p,
   label,
   input,
@@ -582,6 +614,10 @@ footer p {
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media screen and (min-width: 1200px) {
+  .error,
+  .smaller {
+    font-size: 1.6rem;
+  }
   p,
   label,
   input,
