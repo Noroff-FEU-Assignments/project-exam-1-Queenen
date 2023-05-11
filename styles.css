@@ -349,6 +349,11 @@ footer a {
   text-shadow: 4px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
+footer a:hover,
+header nav a:hover {
+  text-decoration: line-through;
+}
+
 footer div {
   display: flex;
   justify-content: center;
