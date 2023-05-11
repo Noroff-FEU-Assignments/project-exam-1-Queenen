@@ -647,9 +647,10 @@ footer p {
   .subscribe {
     position: absolute;
     right: 0;
-    top: 300px;
+    top: 270px;
     width: 50%;
     border-top-left-radius: 2rem;
+    height: 13rem;
   }
   .contact_intro > *,
   .contact_form,
