@@ -126,12 +126,9 @@ button,
 
 .pointer:hover,
 .open_menu:hover,
-.close_menu:hover {
+.close_menu:hover,
+.progress_bar .dot {
   cursor: pointer;
-}
-
-a:hover {
-  text-decoration: line-through;
 }
 
 hr {
@@ -487,15 +484,9 @@ footer p {
 /* REVIEWS */
 .reviews {
   background-color: whitesmoke;
-  padding: 5rem;
-}
-
-.reviews .slide {
-  height: 45rem;
-}
-
-.review_info {
-  margin-top: -2.5rem;
+  padding: 5rem 5rem 3rem 5rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .reviews .button {
@@ -505,6 +496,47 @@ footer p {
   width: 80%;
 }
 
+.r_slide {
+  width: 70%;
+  background-color: white;
+  border-radius: 2rem;
+  height: fit-content;
+  position: relative;
+  margin: 0 0.5rem 5rem 0.5rem;
+}
+
+.r_slide p {
+  display: block;
+  margin: 0 auto 2rem auto;
+  max-width: 25rem;
+  padding: 0 2rem;
+}
+
+.r_slide p.review_info {
+  margin-bottom: 8rem;
+}
+
+.r_slide .italic {
+  margin-top: 1rem;
+}
+
+.r_slide img {
+  width: 100%;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.read-more {
+  position: absolute;
+  bottom: 1.5em;
+  left: 2rem;
+  right: 2rem;
+  margin: 0 auto 0 auto;
+}
+
+.r_slide button {
+  cursor: pointer;
+}
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 450px) {
@@ -514,6 +546,9 @@ footer p {
   .slide_2 {
     display: block;
   }
+}
+
+@media screen and (min-width: 500px) {
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -538,6 +573,10 @@ footer p {
   }
   .slide_3 {
     display: block;
+  }
+  .r_slide {
+    width: 45%;
+    margin-bottom: 2rem;
   }
 }
 
@@ -605,6 +644,10 @@ footer p {
   .about_info,
   .promo_info > * {
     max-width: 40rem;
+  }
+
+  .r_slide {
+    width: 30%;
   }
 }
 

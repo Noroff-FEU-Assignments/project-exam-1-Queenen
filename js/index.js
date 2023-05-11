@@ -50,4 +50,48 @@ function validateEmail(email) {
 
 button.addEventListener("click", validateForm);
 
-// slider
+// Latest Posts Slider
+
+const firstSlide = document.querySelector("#first_slide");
+const secondSlide = document.querySelector("#second_slide");
+const thirdSlide = document.querySelector("#third_slide");
+const dot1 = document.querySelector(".dot-1");
+const dot2 = document.querySelector(".dot-2");
+const dot3 = document.querySelector(".dot-3");
+
+dot1.classList.add("selected");
+secondSlide.style.display = "none";
+thirdSlide.style.display = "none";
+
+dot1.addEventListener("click", slide1);
+dot2.addEventListener("click", slide2);
+dot3.addEventListener("click", slide3);
+
+function slide1() {
+  dot1.classList.add("selected");
+  dot2.classList.remove("selected");
+  dot3.classList.remove("selected");
+  firstSlide.style.display = "flex";
+  secondSlide.style.display = "none";
+  thirdSlide.style.display = "none";
+}
+
+function slide2() {
+  dot2.classList.add("selected");
+  dot1.classList.remove("selected");
+  dot3.classList.remove("selected");
+  firstSlide.style.display = "none";
+  secondSlide.style.display = "flex";
+  thirdSlide.style.display = "none";
+}
+
+function slide3() {
+  dot3.classList.add("selected");
+  dot1.classList.remove("selected");
+  dot2.classList.remove("selected");
+  firstSlide.style.display = "none";
+  secondSlide.style.display = "none";
+  thirdSlide.style.display = "flex";
+}
+
+//Amount of posts
