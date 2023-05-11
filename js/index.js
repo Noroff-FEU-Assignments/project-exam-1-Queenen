@@ -93,5 +93,3 @@ function slide3() {
   secondSlide.style.display = "none";
   thirdSlide.style.display = "flex";
 }
-
-//Amount of posts

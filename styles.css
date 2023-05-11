@@ -301,6 +301,11 @@ header nav a {
   background-color: gray;
 }
 
+.post-2,
+.post-3 {
+  display: none;
+}
+
 /* LOADER */
 
 .loader {
@@ -578,6 +583,9 @@ footer p {
     width: 45%;
     margin-bottom: 2rem;
   }
+  .post-2 {
+    display: block;
+  }
 }
 
 /*Medium devices (tablets, 768px and up) */
@@ -648,6 +656,9 @@ footer p {
 
   .r_slide {
     width: 30%;
+  }
+  .post-3 {
+    display: block;
   }
 }
 
