@@ -15,6 +15,7 @@ html {
   --button: #ffac30;
   --button-hover: #de651b;
   --brown: #a65519;
+  --overlay: rgb(79, 58, 21);
   --light-gray: rgb(236, 236, 236);
 }
 
@@ -46,7 +47,8 @@ p,
 label,
 input,
 button,
-textarea {
+textarea,
+li {
   font-size: 1.4rem;
 }
 
@@ -350,7 +352,8 @@ footer a {
 }
 
 footer a:hover,
-header nav a:hover {
+header nav a:hover,
+.return:hover {
   text-decoration: line-through;
 }
 
@@ -547,6 +550,96 @@ footer p {
 .r_slide button {
   cursor: pointer;
 }
+
+/* GUIDE/REVIEW POSTS */
+.post_info {
+  position: absolute;
+  left: 50%;
+  bottom: 25%;
+  transform: translate(-50%, 50%);
+  width: 80%;
+  z-index: 1;
+  text-align: center;
+  line-height: 3rem;
+}
+
+.post_info h1,
+.post_info p.smaller {
+  color: white;
+}
+
+.post_info h1 {
+  font-size: 2rem;
+}
+
+.hero_post {
+  background-color: var(--overlay);
+  width: auto;
+}
+
+.img_post {
+  opacity: 40%;
+}
+
+.rg_content {
+  background-color: var(--light-gray);
+}
+
+.rg_tips,
+.rg_content {
+  padding: 5rem 5rem 5rem 5rem;
+  line-height: 2rem;
+}
+
+.rg_tips > *,
+.rg_content > * {
+  max-width: 25rem;
+  display: block;
+  margin: auto auto;
+}
+
+.rg-post_container h2 {
+  margin-bottom: 2rem;
+  font-family: "Lato_bold";
+}
+
+li {
+  list-style: inside;
+  margin-bottom: 1rem;
+}
+
+ol {
+  list-style: inside;
+}
+
+ol li {
+  list-style: decimal;
+}
+
+li::before {
+  content: "";
+  width: 0.5rem;
+  display: inline-block;
+}
+
+ol > li::marker {
+  font-family: "Lato_bold";
+}
+
+.return {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.return > * {
+  max-width: 25rem;
+}
+
+.return img {
+  margin-right: 1rem;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 450px) {
@@ -603,7 +696,8 @@ footer p {
   label,
   input,
   button,
-  textarea {
+  textarea,
+  li {
     font-size: 1.6rem;
   }
   a,
@@ -613,7 +707,8 @@ footer p {
   h2 {
     font-size: 2rem;
   }
-  h1 {
+  h1,
+  .post_info h1 {
     font-size: 3rem;
   }
 
@@ -656,7 +751,9 @@ footer p {
   .contact_form,
   .about_introduction,
   .about_info,
-  .promo_info > * {
+  .promo_info > *,
+  .rg_tips > *,
+  .rg_content > * {
     max-width: 40rem;
   }
 
@@ -682,7 +779,8 @@ footer p {
   label,
   input,
   button,
-  textarea {
+  textarea,
+  li {
     font-size: 1.8rem;
   }
   a,
@@ -692,7 +790,8 @@ footer p {
   h2 {
     font-size: 2.2rem;
   }
-  h1 {
+  h1,
+  .post_info h1 {
     font-size: 3.5rem;
   }
 }
