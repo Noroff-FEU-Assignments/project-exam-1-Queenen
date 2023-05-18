@@ -96,8 +96,9 @@ function slide3() {
 
 // Slider Content
 
-const postContainer = document.querySelector(".post_container");
-const eachSlide = document.querySelector(".r_slide");
+/*const postContainer = document.querySelector(".index_posts");
+const newPost = document.querySelector(".r_slide");
+const postContent = document.querySelector(".post_content");
 
 const baseUrl = "https://www.rainydaysshop.no/wp-json/wp/v2";
 const postsUrl = "/posts";
@@ -105,37 +106,62 @@ const mediaUrl = "/media";
 const categoryUrl = "/categories";
 const tagsUrl = "/tags";
 
-function fetchContent() {
-  async function fetchImages() {
-    const response = await fetch(baseUrl + mediaUrl);
-    const results = await response.json();
-    //console.log(results);
-    results.forEach((images) => {
-      const imgSrc = images.guid.rendered;
-      const altText = images.alt_text;
-    });
-  }
-  fetchImages();
-
-  async function fetchInfo() {
-    const response = await fetch(baseUrl + postsUrl);
-    const results = await response.json();
-    //console.log(results);
-    results.forEach((info) => {
-      const id = info.id;
-      const date = info.date.substring(0, 10);
-      const title = info.title.rendered;
-      const description = info.excerpt.rendered;
-      //console.log(info.tags);
-      info.tags.forEach((tags) => {});
-      info.categories.forEach((categories) => {});
-    });
-  }
-  fetchInfo();
+async function fetchImages() {
+  const response = await fetch(baseUrl + mediaUrl);
+  const results = await response.json();
+  //console.log(results);
+  results.forEach((images) => {
+    const imgSrc = images.guid.rendered;
+    const altText = images.alt_text;
+    createHTML(imgSrc, altText);
+  });
 }
-fetchContent();
+fetchImages();
 
-/*async function fetchImages() {
+async function fetchInfo() {
+  const response = await fetch(baseUrl + postsUrl);
+  const results = await response.json();
+  //console.log(results);
+  results.forEach((info) => {
+    const id = info.id;
+    const date = info.date.substring(0, 10);
+    const title = info.title.rendered;
+    const description = info.excerpt.rendered;
+    const newDescription = description.substring(3, 60) + " ...";
+    createHTML(id, date, title, newDescription);
+    //console.log(newDescription);
+    info.categories.forEach((categories) => {
+      let category;
+      if (categories === 22) {
+        //reviews
+        category = rpost.html;
+      }
+      if (categories === 23) {
+        //guides
+        category = gpost.html;
+      }
+      createHTML(category);
+    });
+  });
+}
+fetchInfo();
+
+function createHTML(imgSrc, altText, title, date, newDescription, category) {
+  newPost.innerHTML = `
+  <img src="${imgSrc}" alt="${altText}" />
+          <center>
+            <p class="bold">${title}</p>
+            <p class="smaller">${date}</p>
+          <p class="review_info">
+            ${newDescription}
+          </p>
+          <a href="${category}" class="read-more"
+            ><button class="smaller">READ MORE</button></a
+          ></center>`;
+}
+
+createHTML();
+async function fetchImages() {
     try {
       const response = await fetch(baseUrl + mediaUrl);
       const results = await response.json();
