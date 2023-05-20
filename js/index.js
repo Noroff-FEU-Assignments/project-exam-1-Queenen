@@ -1,4 +1,4 @@
-// Subscribe
+// Subscribe form
 
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
@@ -50,7 +50,7 @@ function validateEmail(email) {
 
 button.addEventListener("click", validateForm);
 
-// Latest Posts Slider
+// Latest posts slider
 
 const firstSlide = document.querySelector("#first_slide");
 const secondSlide = document.querySelector("#second_slide");
@@ -94,134 +94,117 @@ function slide3() {
   thirdSlide.style.display = "flex";
 }
 
-// Slider Content
+// Slider content
 
-/*const postContainer = document.querySelector(".index_posts");
-const newPost = document.querySelector(".r_slide");
-const postContent = document.querySelector(".post_content");
+const url = "https://www.rainydaysshop.no/wp-json/wp/v2/posts";
+const postContainer = document.querySelector(".post_container");
+const indexPost = document.querySelector(".index_post");
 
-const baseUrl = "https://www.rainydaysshop.no/wp-json/wp/v2";
-const postsUrl = "/posts";
-const mediaUrl = "/media";
-const categoryUrl = "/categories";
-const tagsUrl = "/tags";
-
-async function fetchImages() {
-  const response = await fetch(baseUrl + mediaUrl);
+async function fetchContent() {
+  const response = await fetch(url);
   const results = await response.json();
-  //console.log(results);
-  results.forEach((images) => {
-    const imgSrc = images.guid.rendered;
-    const altText = images.alt_text;
-    createHTML(imgSrc, altText);
-  });
-}
-fetchImages();
 
-async function fetchInfo() {
-  const response = await fetch(baseUrl + postsUrl);
-  const results = await response.json();
-  //console.log(results);
-  results.forEach((info) => {
-    const id = info.id;
-    const date = info.date.substring(0, 10);
-    const title = info.title.rendered;
-    const description = info.excerpt.rendered;
-    const newDescription = description.substring(3, 60) + " ...";
-    createHTML(id, date, title, newDescription);
-    //console.log(newDescription);
-    info.categories.forEach((categories) => {
-      let category;
-      if (categories === 22) {
-        //reviews
-        category = rpost.html;
-      }
-      if (categories === 23) {
-        //guides
-        category = gpost.html;
-      }
-      createHTML(category);
-    });
-  });
-}
-fetchInfo();
+  postContainer.innerHTML = "";
 
-function createHTML(imgSrc, altText, title, date, newDescription, category) {
-  newPost.innerHTML = `
-  <img src="${imgSrc}" alt="${altText}" />
-          <center>
-            <p class="bold">${title}</p>
-            <p class="smaller">${date}</p>
-          <p class="review_info">
-            ${newDescription}
-          </p>
-          <a href="${category}" class="read-more"
-            ><button class="smaller">READ MORE</button></a
-          ></center>`;
-}
+  for (let index = 0; index < results.length; index++) {
+    const images = results[index].content.rendered;
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = images;
+    const imgTags = tempDiv.getElementsByTagName("img");
+    const date = results[index].date.substring(0, 10);
+    const title = results[index].title.rendered;
+    let description = results[index].excerpt.rendered;
+    description = description.substring(3, 65) + " ...";
 
-createHTML();
-async function fetchImages() {
-    try {
-      const response = await fetch(baseUrl + mediaUrl);
-      const results = await response.json();
-      //console.log(results);
+    for (let index = 0; index < imgTags.length; index++) {
+      //leave as "var" for accessibility!
+      var imgSrc = imgTags[index].src;
+      var altText = imgTags[index].alt;
+    }
 
-      for (let i = 0; i < results.length; i++) {
-        const imageSrc = results[i].guid.rendered;
-        postContainer.innerHTML = `<center><div class="r_slide post-1">
-        <img src="${imageSrc}"/></div></center>`;
-        //console.log(imageSrc);
-      }
-    } catch (error) {
-      console.log(error);
-      postContainer.innerHTML = error;
+    // Amount of posts by mediaquery
+
+    // phone
+
+    if (
+      window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+      index <= 0
+    ) {
+      createHTML(imgSrc, altText, title, date, description, firstSlide);
+      continue;
+    }
+
+    if (
+      window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+      index <= 1
+    ) {
+      createHTML(imgSrc, altText, title, date, description, secondSlide);
+      continue;
+    }
+
+    if (
+      window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+      index <= 2
+    ) {
+      createHTML(imgSrc, altText, title, date, description, thirdSlide);
+      continue;
+    }
+
+    // tablet
+    if (
+      window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+      index <= 1
+    ) {
+      createHTML(imgSrc, altText, title, date, description, firstSlide);
+      continue;
+    }
+
+    if (
+      window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+      index <= 3
+    ) {
+      createHTML(imgSrc, altText, title, date, description, secondSlide);
+      continue;
+    }
+
+    if (
+      window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+      index <= 5
+    ) {
+      createHTML(imgSrc, altText, title, date, description, thirdSlide);
+      continue;
+    }
+
+    // deskop
+    if (window.matchMedia("(min-width: 992px)").matches && index <= 2) {
+      createHTML(imgSrc, altText, title, date, description, firstSlide);
+      continue;
+    }
+
+    if (window.matchMedia("(min-width: 992px)").matches && index <= 5) {
+      createHTML(imgSrc, altText, title, date, description, secondSlide);
+      continue;
+    }
+
+    if (window.matchMedia("(min-width: 992px)").matches && index <= 8) {
+      createHTML(imgSrc, altText, title, date, description, thirdSlide);
+      continue;
     }
   }
-
-  async function fetchContent() {
-    try {
-      const response = await fetch(baseUrl + postsUrl);
-      const results = await response.json();
-      //console.log(results);
-
-      // TAGS
-      for (let i = 0; i < results.length; i++) {
-        let tags = results[i].tags;
-        //console.log(tags);
-        for (let i = 0; i < tags.length; i++) {
-          tags = tags[i];
-          //console.log(tags);
-        }
-      }
-
-      // CATEGORIES
-      for (let i = 0; i < results.length; i++) {
-        let categories = results[i].categories;
-        //console.log(categories);
-        for (let i = 0; i < categories.length; i++) {
-          categories = categories[i];
-          //console.log(categories);
-        }
-      }
-
-      // TITLE, DATE & DESCRIPTION
-
-      for (let i = 0; i < results.length; i++) {
-        const title = results[i].title.rendered;
-        const date = results[i].date;
-        const length = 10;
-        const newDate = date.substring(0, length);
-        const description = results[i].excerpt.rendered;
-        console.log(description);
-      }
-    } catch (error) {
-      console.log(error);
-      postContainer.innerHTML = error;
-    }
-  }
-  fetchImages();
-  fetchContent();
 }
 
-fetchContent();*/
+fetchContent();
+
+function createHTML(imgSrc, altText, title, date, description, slide) {
+  slide.innerHTML += `<div class="index_post">
+              <img src="${imgSrc}" alt="${altText}"/>
+              <center>
+              <p class="bold title">${title}</p>
+              <p class="italic">${date}</p>
+              <p class="review_info">${description}</p>
+              </center>
+              <a href="post.html" class="read-more">
+              <button class="smaller">READ MORE</button>
+              </a>
+              </div>`;
+}

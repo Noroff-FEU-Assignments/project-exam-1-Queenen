@@ -242,7 +242,7 @@ header nav a {
 }
 
 .index_posts h2 {
-  margin-bottom: 4rem;
+  margin-bottom: 7rem;
 }
 .post_container {
   display: flex;
@@ -306,6 +306,39 @@ header nav a {
 .post-2,
 .post-3 {
   display: none;
+}
+
+.index_post_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.index_post_card img {
+  width: 100%;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.index_post_card {
+  width: 80%;
+  background-color: white;
+  height: fit-content;
+  border-radius: 2rem;
+  margin-bottom: 3rem;
+}
+
+.index_post_card button {
+  margin-top: 1rem;
+}
+
+.index_post_text {
+  padding: 2rem 3rem;
+  line-height: 2rem;
+}
+
+.index_post_text > p {
+  margin-bottom: 0.5rem;
 }
 
 /* LOADER */
@@ -509,7 +542,7 @@ footer p {
   width: 80%;
 }
 
-.r_slide {
+.index_post {
   width: 70%;
   background-color: white;
   border-radius: 2rem;
@@ -518,22 +551,27 @@ footer p {
   margin: 0 0.5rem 5rem 0.5rem;
 }
 
-.r_slide p {
+.index_post .title {
+  margin-top: 2rem;
+  height: 4rem;
+}
+
+.index_post p {
   display: block;
   margin: 0 auto 2rem auto;
   max-width: 25rem;
   padding: 0 2rem;
 }
 
-.r_slide p.review_info {
+.index_post p.review_info {
   margin-bottom: 8rem;
 }
 
-.r_slide .italic {
+.index_post .italic {
   margin-top: 1rem;
 }
 
-.r_slide img {
+.index_post img {
   width: 100%;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
@@ -547,7 +585,7 @@ footer p {
   margin: 0 auto 0 auto;
 }
 
-.r_slide button {
+.index_post button {
   cursor: pointer;
 }
 
@@ -677,8 +715,8 @@ ol > li::marker {
   .slide_3 {
     display: block;
   }
-  .r_slide {
-    width: 45%;
+  .index_post {
+    width: 50%;
     margin-bottom: 2rem;
   }
   .post-2 {
@@ -757,8 +795,8 @@ ol > li::marker {
     max-width: 40rem;
   }
 
-  .r_slide {
-    width: 30%;
+  .index_post {
+    width: 40%;
   }
   .post-3 {
     display: block;
@@ -767,6 +805,10 @@ ol > li::marker {
 
 /*Large devices (desktops, 992px and up)*/
 @media screen and (min-width: 992px) {
+  .index_post {
+    width: 30%;
+    margin-bottom: 2rem;
+  }
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
@@ -793,5 +835,8 @@ ol > li::marker {
   h1,
   .post_info h1 {
     font-size: 3.5rem;
+  }
+  .index_post {
+    height: 50rem;
   }
 }
