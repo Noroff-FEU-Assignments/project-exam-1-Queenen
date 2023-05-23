@@ -118,6 +118,17 @@ button,
   font-family: "Lato";
 }
 
+.red {
+  color: red;
+  font-family: "Lato";
+  margin-bottom: 1rem;
+}
+
+.loading_error {
+  display: block;
+  padding: 3rem 5rem;
+}
+
 .smaller {
   font-size: 1.2rem;
 }
@@ -129,7 +140,8 @@ button,
 .pointer:hover,
 .open_menu:hover,
 .close_menu:hover,
-.progress_bar .dot {
+.progress_bar .dot,
+.post_card button {
   cursor: pointer;
 }
 
@@ -312,24 +324,6 @@ header nav a {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-}
-
-.index_post_card img {
-  width: 100%;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-}
-
-.index_post_card {
-  width: 80%;
-  background-color: white;
-  height: fit-content;
-  border-radius: 2rem;
-  margin-bottom: 3rem;
-}
-
-.index_post_card button {
-  margin-top: 1rem;
 }
 
 .index_post_text {
@@ -530,16 +524,45 @@ footer p {
 /* REVIEWS */
 .reviews {
   background-color: whitesmoke;
-  padding: 5rem 5rem 3rem 5rem;
+  padding: 5rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.reviews .button {
-  display: block;
-  margin: 2rem;
-  text-align: center;
+.reviews .post_card {
   width: 80%;
+  line-height: 3rem;
+  background-color: white;
+  border-radius: 2rem;
+  height: fit-content;
+  padding-bottom: 4rem;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.reviews .post_card center {
+  padding: 0 2rem;
+}
+
+.reviews .post_card button {
+  position: absolute;
+  width: 80%;
+  left: 0;
+  right: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.reviews .post_card img {
+  width: 100%;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
+
+.post_card .review_info {
+  margin: 2rem 0;
+  line-height: 2rem;
 }
 
 .index_post {
@@ -577,18 +600,6 @@ footer p {
   border-top-right-radius: 2rem;
 }
 
-.read-more {
-  position: absolute;
-  bottom: 1.5em;
-  left: 2rem;
-  right: 2rem;
-  margin: 0 auto 0 auto;
-}
-
-.index_post button {
-  cursor: pointer;
-}
-
 /* GUIDE/REVIEW POSTS */
 .post_info {
   position: absolute;
@@ -608,6 +619,7 @@ footer p {
 
 .post_info h1 {
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .hero_post {
@@ -619,8 +631,8 @@ footer p {
   opacity: 40%;
 }
 
-.rg_content {
-  background-color: var(--light-gray);
+.description p {
+  margin-bottom: 2rem;
 }
 
 .rg_tips,
@@ -722,6 +734,9 @@ ol > li::marker {
   .post-2 {
     display: block;
   }
+  .reviews .post_card {
+    width: 50%;
+  }
 }
 
 /*Medium devices (tablets, 768px and up) */
@@ -801,6 +816,9 @@ ol > li::marker {
   .post-3 {
     display: block;
   }
+  .reviews .post_card {
+    width: 40%;
+  }
 }
 
 /*Large devices (desktops, 992px and up)*/
@@ -808,6 +826,13 @@ ol > li::marker {
   .index_post {
     width: 30%;
     margin-bottom: 2rem;
+  }
+  .reviews {
+    padding: 5rem 3rem;
+  }
+  .reviews .post_card {
+    width: 30%;
+    margin-bottom: 2.5rem;
   }
 }
 

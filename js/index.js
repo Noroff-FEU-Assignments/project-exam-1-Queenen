@@ -101,95 +101,98 @@ const postContainer = document.querySelector(".post_container");
 const indexPost = document.querySelector(".index_post");
 
 async function fetchContent() {
-  const response = await fetch(url);
-  const results = await response.json();
+  try {
+    const response = await fetch(url);
+    const results = await response.json();
 
-  postContainer.innerHTML = "";
+    for (let index = 0; index < results.length; index++) {
+      const images = results[index].content.rendered;
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = images;
+      const imgTags = tempDiv.getElementsByTagName("img");
+      const date = results[index].date.substring(0, 10);
+      const title = results[index].title.rendered;
+      let description = results[index].excerpt.rendered;
+      description = description.substring(3, 65) + " ...";
 
-  for (let index = 0; index < results.length; index++) {
-    const images = results[index].content.rendered;
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = images;
-    const imgTags = tempDiv.getElementsByTagName("img");
-    const date = results[index].date.substring(0, 10);
-    const title = results[index].title.rendered;
-    let description = results[index].excerpt.rendered;
-    description = description.substring(3, 65) + " ...";
+      for (let index = 0; index < imgTags.length; index++) {
+        //leave as "var" for accessibility!
+        var imgSrc = imgTags[index].src;
+        var altText = imgTags[index].alt;
+      }
 
-    for (let index = 0; index < imgTags.length; index++) {
-      //leave as "var" for accessibility!
-      var imgSrc = imgTags[index].src;
-      var altText = imgTags[index].alt;
+      // Amount of posts by mediaquery
+
+      // phone
+
+      if (
+        window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+        index <= 0
+      ) {
+        createHTML(imgSrc, altText, title, date, description, firstSlide);
+        continue;
+      }
+
+      if (
+        window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+        index <= 1
+      ) {
+        createHTML(imgSrc, altText, title, date, description, secondSlide);
+        continue;
+      }
+
+      if (
+        window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+        index <= 2
+      ) {
+        createHTML(imgSrc, altText, title, date, description, thirdSlide);
+        continue;
+      }
+
+      // tablet
+      if (
+        window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+        index <= 1
+      ) {
+        createHTML(imgSrc, altText, title, date, description, firstSlide);
+        continue;
+      }
+
+      if (
+        window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+        index <= 3
+      ) {
+        createHTML(imgSrc, altText, title, date, description, secondSlide);
+        continue;
+      }
+
+      if (
+        window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+        index <= 5
+      ) {
+        createHTML(imgSrc, altText, title, date, description, thirdSlide);
+        continue;
+      }
+
+      // deskop
+      if (window.matchMedia("(min-width: 992px)").matches && index <= 2) {
+        createHTML(imgSrc, altText, title, date, description, firstSlide);
+        continue;
+      }
+
+      if (window.matchMedia("(min-width: 992px)").matches && index <= 5) {
+        createHTML(imgSrc, altText, title, date, description, secondSlide);
+        continue;
+      }
+
+      if (window.matchMedia("(min-width: 992px)").matches && index <= 8) {
+        createHTML(imgSrc, altText, title, date, description, thirdSlide);
+        continue;
+      }
     }
-
-    // Amount of posts by mediaquery
-
-    // phone
-
-    if (
-      window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
-      index <= 0
-    ) {
-      createHTML(imgSrc, altText, title, date, description, firstSlide);
-      continue;
-    }
-
-    if (
-      window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
-      index <= 1
-    ) {
-      createHTML(imgSrc, altText, title, date, description, secondSlide);
-      continue;
-    }
-
-    if (
-      window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
-      index <= 2
-    ) {
-      createHTML(imgSrc, altText, title, date, description, thirdSlide);
-      continue;
-    }
-
-    // tablet
-    if (
-      window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
-      index <= 1
-    ) {
-      createHTML(imgSrc, altText, title, date, description, firstSlide);
-      continue;
-    }
-
-    if (
-      window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
-      index <= 3
-    ) {
-      createHTML(imgSrc, altText, title, date, description, secondSlide);
-      continue;
-    }
-
-    if (
-      window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
-      index <= 5
-    ) {
-      createHTML(imgSrc, altText, title, date, description, thirdSlide);
-      continue;
-    }
-
-    // deskop
-    if (window.matchMedia("(min-width: 992px)").matches && index <= 2) {
-      createHTML(imgSrc, altText, title, date, description, firstSlide);
-      continue;
-    }
-
-    if (window.matchMedia("(min-width: 992px)").matches && index <= 5) {
-      createHTML(imgSrc, altText, title, date, description, secondSlide);
-      continue;
-    }
-
-    if (window.matchMedia("(min-width: 992px)").matches && index <= 8) {
-      createHTML(imgSrc, altText, title, date, description, thirdSlide);
-      continue;
-    }
+  } catch (error) {
+    postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
+      <p class="smaller">${error}</p></div>`;
   }
 }
 
