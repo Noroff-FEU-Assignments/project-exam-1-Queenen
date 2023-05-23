@@ -101,9 +101,9 @@ textarea {
 button,
 .button {
   width: 100%;
-  padding: 0.5rem;
+  padding: 1rem 2rem;
   border-style: none;
-  border-radius: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
   background-color: var(--button);
   font-family: "Lato_bold";
   color: white;
@@ -141,7 +141,7 @@ button,
 .open_menu:hover,
 .close_menu:hover,
 .progress_bar .dot,
-.post_card button {
+button:hover {
   cursor: pointer;
 }
 
@@ -207,6 +207,11 @@ header nav a {
   background-color: var(--navigation);
 }
 
+.subscribe_button {
+  border-radius: 0.5rem;
+  padding: 0.7rem 0;
+}
+
 .sub_input {
   width: 70%;
 }
@@ -226,8 +231,13 @@ header nav a {
   margin-bottom: 1rem;
 }
 
+.sub_info {
+  margin-top: -0.6rem;
+}
+
 .sub_info p {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .sub_info {
@@ -295,7 +305,7 @@ header nav a {
 }
 
 .progress_bar {
-  margin-top: 4rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
@@ -587,7 +597,7 @@ footer p {
 }
 
 .index_post p.review_info {
-  margin-bottom: 8rem;
+  margin-bottom: 3rem;
 }
 
 .index_post .italic {
@@ -598,6 +608,11 @@ footer p {
   width: 100%;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
+}
+
+.post_title {
+  max-width: 25rem;
+  height: 7rem;
 }
 
 /* GUIDE/REVIEW POSTS */
@@ -737,18 +752,27 @@ ol > li::marker {
   .reviews .post_card {
     width: 50%;
   }
+  .progress_bar {
+    margin-top: 5rem;
+  }
+  header nav {
+    right: 2rem;
+  }
+  header nav a {
+    margin: 1.5rem 0;
+  }
 }
 
 /*Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
   .error,
-  .smaller {
+  .smaller,
+  button {
     font-size: 1.4rem;
   }
   p,
   label,
   input,
-  button,
   textarea,
   li {
     font-size: 1.6rem;
@@ -763,10 +787,6 @@ ol > li::marker {
   h1,
   .post_info h1 {
     font-size: 3rem;
-  }
-
-  header nav a {
-    margin: 1.5rem 0;
   }
   .promo_logo {
     width: 15rem;
@@ -784,21 +804,20 @@ ol > li::marker {
   }
   .sub_info {
     width: 40%;
-    margin-top: -0.25rem;
+    margin-top: -0.5rem;
   }
   .sub_input label {
     margin-right: 1rem;
   }
+
   .subscribe {
     padding: 2rem;
-  }
-  .subscribe {
     position: absolute;
-    right: 0;
-    top: 270px;
+    left: 0;
+    top: 280px;
     width: 50%;
-    border-top-left-radius: 2rem;
-    height: 13rem;
+    border-top-right-radius: 2rem;
+    height: 12rem;
   }
   .contact_intro > *,
   .contact_form,
@@ -839,13 +858,13 @@ ol > li::marker {
 /*Extra large devices (large desktops, 1200px and up)*/
 @media screen and (min-width: 1200px) {
   .error,
-  .smaller {
+  .smaller,
+  button {
     font-size: 1.6rem;
   }
   p,
   label,
   input,
-  button,
   textarea,
   li {
     font-size: 1.8rem;
@@ -860,8 +879,5 @@ ol > li::marker {
   h1,
   .post_info h1 {
     font-size: 3.5rem;
-  }
-  .index_post {
-    height: 50rem;
   }
 }

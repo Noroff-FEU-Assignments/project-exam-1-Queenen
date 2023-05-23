@@ -6,6 +6,8 @@ const nameError = document.querySelector(".i_name_error");
 const emailError = document.querySelector(".i_email_error");
 const button = document.querySelector(".subscribe_button");
 const container = document.querySelector(".subscribe");
+const infoDiv = document.querySelector(".sub_info");
+const subscribe = document.querySelector(".subscribe");
 
 function validateForm(event) {
   event.preventDefault();
@@ -21,6 +23,16 @@ function validateForm(event) {
     emailError.style.display = "block";
   }
 
+  if (
+    validateEmail(email.value) === false &&
+    checkLength(nameInput.value, 5) === false &&
+    window.matchMedia("(min-width: 768px)")
+  ) {
+    infoDiv.style.marginTop = "2rem";
+    button.style.marginTop = "1rem";
+    subscribe.style.height = "15rem";
+    subscribe.style.top = "250px";
+  }
   if (
     validateEmail(email.value) === true &&
     checkLength(nameInput.value, 5) === true
@@ -106,6 +118,8 @@ async function fetchContent() {
     const results = await response.json();
 
     for (let index = 0; index < results.length; index++) {
+      var postSlug = results[index].slug;
+      var postId = results[index].id;
       const images = results[index].content.rendered;
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = images;
@@ -126,7 +140,7 @@ async function fetchContent() {
       // phone
 
       if (
-        window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+        window.matchMedia("(min-width:0px) and (max-width: 767px)").matches &&
         index <= 0
       ) {
         createHTML(imgSrc, altText, title, date, description, firstSlide);
@@ -134,7 +148,7 @@ async function fetchContent() {
       }
 
       if (
-        window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+        window.matchMedia("(min-width:0px) and (max-width: 767px)").matches &&
         index <= 1
       ) {
         createHTML(imgSrc, altText, title, date, description, secondSlide);
@@ -142,7 +156,7 @@ async function fetchContent() {
       }
 
       if (
-        window.matchMedia("(min-width:0px) and (max-width: 768px)").matches &&
+        window.matchMedia("(min-width:0px) and (max-width: 767px)").matches &&
         index <= 2
       ) {
         createHTML(imgSrc, altText, title, date, description, thirdSlide);
@@ -151,7 +165,7 @@ async function fetchContent() {
 
       // tablet
       if (
-        window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+        window.matchMedia("(min-width:768px) and (max-width: 991px)").matches &&
         index <= 1
       ) {
         createHTML(imgSrc, altText, title, date, description, firstSlide);
@@ -159,7 +173,7 @@ async function fetchContent() {
       }
 
       if (
-        window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+        window.matchMedia("(min-width:768px) and (max-width: 991px)").matches &&
         index <= 3
       ) {
         createHTML(imgSrc, altText, title, date, description, secondSlide);
@@ -167,7 +181,7 @@ async function fetchContent() {
       }
 
       if (
-        window.matchMedia("(min-width:768px) and (max-width: 992px)").matches &&
+        window.matchMedia("(min-width:768px) and (max-width: 991px)").matches &&
         index <= 5
       ) {
         createHTML(imgSrc, altText, title, date, description, thirdSlide);
@@ -189,6 +203,20 @@ async function fetchContent() {
         createHTML(imgSrc, altText, title, date, description, thirdSlide);
         continue;
       }
+
+      function createHTML(imgSrc, altText, title, date, description, slide) {
+        slide.innerHTML += `<div class="index_post">
+                    <img src="${imgSrc}" alt="${altText}"/>
+                    <center>
+                    <p class="bold title">${title}</p>
+                    <p class="italic">${date}</p>
+                    <p class="review_info">${description}</p>
+                    </center>
+                    <a href="post.html?id=${postId}&name=${postSlug}" class="read-more">
+                    <button>READ MORE</button>
+                    </a>
+                    </div>`;
+      }
     }
   } catch (error) {
     postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
@@ -197,17 +225,3 @@ async function fetchContent() {
 }
 
 fetchContent();
-
-function createHTML(imgSrc, altText, title, date, description, slide) {
-  slide.innerHTML += `<div class="index_post">
-              <img src="${imgSrc}" alt="${altText}"/>
-              <center>
-              <p class="bold title">${title}</p>
-              <p class="italic">${date}</p>
-              <p class="review_info">${description}</p>
-              </center>
-              <a href="post.html" class="read-more">
-              <button class="smaller">READ MORE</button>
-              </a>
-              </div>`;
-}

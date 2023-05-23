@@ -10,6 +10,7 @@ async function fetchContent() {
     const results = await response.json();
 
     for (let index = 0; index < results.length; index++) {
+      //console.log(results[index]);
       const postId = results[index].id;
       const postSlug = results[index].slug;
       const title = results[index].title.rendered;
@@ -30,31 +31,22 @@ async function fetchContent() {
         var altText = imgTags[index].alt;
       }
 
-      function checkCategory() {
-        if (categories === 22) {
-          categories = "Guides";
-          categoryUrl = "/guides.html";
-        }
-        if (categories === 23) {
-          categories = "Reviews";
-          categoryUrl = "/reviews.html";
-        }
-      }
-      checkCategory();
-
-      hero.innerHTML = `
+      if (categories === 22) {
+        categories = "Guides";
+        categoryUrl = "/guides.html";
+        hero.innerHTML = `
       <h1 class="hero_title">${categories}</h1>
       <img
-        src="${imgSrc}"
-        alt="${altText}"
+        src="/images/hero/reviews.jpg"
+        alt="view of a city in the sunset"
         class="hero_img" />
       `;
 
-      container.innerHTML += `
+        container.innerHTML += `
       <div class="post_card">
         <img src="${imgSrc}" alt="${altText}" />
         <center>
-          <p class="bold">${title}</p>
+          <p class="bold post_title">${title}</p>
           <p class="italic">${date}</p>
 
           <p class="review_info">
@@ -66,6 +58,7 @@ async function fetchContent() {
         >
       </div>
       `;
+      }
     }
   } catch (error) {
     container.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
