@@ -44,7 +44,12 @@ async function fetchContent() {
       <img
         src="${imgSrc}"
         alt="${altText}"
-        class="hero_img img_post" />
+        class="hero_img img_post" id="myImg" />
+        <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+        </div>
       `;
 
     postContainer.innerHTML = `
@@ -59,6 +64,28 @@ async function fetchContent() {
         </div>
       </div>
       `;
+
+    // Enlarge image on click
+    var modal = document.getElementById("myModal");
+
+    var postImg = document.getElementById("post_img");
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    postImg.addEventListener("click", openImg);
+    modal.addEventListener("click", closeImg);
+
+    function openImg() {
+      modal.style.display = "block";
+      modalImg.src = imgSrc;
+      captionText.innerHTML = altText;
+    }
+
+    function closeImg() {
+      modal.style.display = "none";
+      postImg.removeEventListener("click", openImg);
+    }
   } catch (error) {
     postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
     <p class="smaller">${error}</p></div>`;
