@@ -54,7 +54,7 @@ async function fetchContent() {
           </p>
         </center>
         <a href="post.html?id=${postId}&name=${postSlug}" class="read-more"
-          ><button class="smaller">READ MORE</button></a
+          ><button>READ MORE</button></a
         >
       </div>
       `;

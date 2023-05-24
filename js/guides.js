@@ -37,7 +37,7 @@ async function fetchContent() {
         hero.innerHTML = `
       <h1 class="hero_title">${categories}</h1>
       <img
-        src="/images/hero/reviews.jpg"
+        src="/images/hero/guides.jpg"
         alt="view of a city in the sunset"
         class="hero_img" />
       `;
@@ -54,7 +54,7 @@ async function fetchContent() {
           </p>
         </center>
         <a href="post.html?id=${postId}&name=${postSlug}" class="read-more"
-          ><button class="smaller">READ MORE</button></a
+          ><button>READ MORE</button></a
         >
       </div>
       `;

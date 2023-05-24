@@ -13,9 +13,9 @@ html {
 :root {
   --navigation: #f1efee;
   --button: #ffac30;
-  --button-hover: #de651b;
+  --button-hover: #e7692e;
   --brown: #a65519;
-  --overlay: rgb(79, 58, 21);
+  --overlay: rgb(213, 213, 213);
   --light-gray: rgb(236, 236, 236);
 }
 
@@ -65,8 +65,7 @@ h2 {
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: white;
+  font-size: 2rem;
 }
 
 .icon {
@@ -95,7 +94,7 @@ textarea {
 
 .italic {
   font-family: "Lato_italic";
-  color: var(--button);
+  color: var(--button-hover);
 }
 
 button,
@@ -127,10 +126,6 @@ button,
 .loading_error {
   display: block;
   padding: 3rem 5rem;
-}
-
-.smaller {
-  font-size: 1.2rem;
 }
 
 .green {
@@ -189,7 +184,7 @@ header nav a {
 .hero_title {
   position: absolute;
   font-family: "Ledger";
-  right: 0;
+  right: 1rem;
   top: 90%;
   transform: translate(-25%, -50%);
 }
@@ -546,9 +541,9 @@ footer p {
   background-color: white;
   border-radius: 2rem;
   height: fit-content;
-  padding-bottom: 4rem;
+  padding-bottom: 3.5rem;
   position: relative;
-  margin-bottom: 5rem;
+  margin: 0 2rem 5rem 0;
 }
 
 .reviews .post_card center {
@@ -557,7 +552,7 @@ footer p {
 
 .reviews .post_card button {
   position: absolute;
-  width: 80%;
+  width: 100%;
   left: 0;
   right: 0;
   display: block;
@@ -627,14 +622,19 @@ footer p {
   line-height: 3rem;
 }
 
-.post_info h1,
-.post_info p.smaller {
-  color: white;
+.post_info h1 {
+  color: black;
 }
 
 .post_info h1 {
   font-size: 2rem;
   margin-bottom: 2rem;
+  font-family: "Ledger";
+}
+
+.post_info p {
+  letter-spacing: 0.2rem;
+  color: black;
 }
 
 .hero_post {
@@ -786,7 +786,7 @@ ol > li::marker {
   }
   h1,
   .post_info h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .promo_logo {
     width: 15rem;
@@ -851,7 +851,7 @@ ol > li::marker {
   }
   .reviews .post_card {
     width: 30%;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
   }
 }
 
