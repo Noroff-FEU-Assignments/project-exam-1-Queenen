@@ -294,12 +294,16 @@ header nav a {
   justify-content: center;
   justify-content: space-evenly;
 }
+.post_container .loader {
+  margin-bottom: 5rem;
+}
 .progress_bar {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
 }
 .dot {
+  display: none;
   background-color: lightgrey;
   width: 1rem;
   height: 1rem;
@@ -468,12 +472,13 @@ footer p {
   justify-content: space-evenly;
 }
 
+.reviews .loader {
+  margin-top: 3.5rem;
+}
+
 .view-more,
 .view-less {
   background-color: gray;
-}
-
-.view-less {
   display: none;
 }
 

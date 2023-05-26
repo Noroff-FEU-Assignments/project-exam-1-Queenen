@@ -67,6 +67,8 @@ button.addEventListener("click", validateForm);
 const firstSlide = document.querySelector("#first_slide");
 const secondSlide = document.querySelector("#second_slide");
 const thirdSlide = document.querySelector("#third_slide");
+const progressBar = document.querySelector(".progress_bar");
+const allDots = document.querySelectorAll(".dot");
 const dot1 = document.querySelector(".dot-1");
 const dot2 = document.querySelector(".dot-2");
 const dot3 = document.querySelector(".dot-3");
@@ -112,10 +114,14 @@ const url = "https://www.rainydaysshop.no/wp-json/wp/v2/posts/?per_page=30";
 const postContainer = document.querySelector(".post_container");
 const card = document.querySelector(".post_card");
 
+postContainer.innerHTML = `<div class="loader"></div>`;
+
 async function fetchContent() {
   try {
     const response = await fetch(url);
     const results = await response.json();
+
+    postContainer.innerHTML = "";
 
     for (let i = 0; i < results.length; i++) {
       const title = results[i].title.rendered;
@@ -134,6 +140,10 @@ async function fetchContent() {
         var src = imgTags[i].src;
         var alt = imgTags[i].alt;
       }
+
+      allDots.forEach((dots) => {
+        dots.style.display = "block";
+      });
 
       //Amount of posts based of media queries
       if (
@@ -216,7 +226,7 @@ async function fetchContent() {
     }
   } catch (error) {
     postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
-      <p class="smaller">${error}</p></div>`;
+      <p style="font-size: 1.2rem">${error}</p></div>`;
   }
 }
 

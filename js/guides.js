@@ -1,9 +1,9 @@
-// Slider content
-
 const url =
   "https://www.rainydaysshop.no/wp-json/wp/v2/posts?categories=22&per_page=10";
-const container = document.querySelector(".post_container");
+const container = document.querySelector(".reviews");
 const hero = document.querySelector(".hero");
+
+container.innerHTML = `<div class="loader"></div>`;
 
 async function fetchContent() {
   try {
@@ -38,7 +38,10 @@ async function fetchContent() {
 
       createHTML(title, id, slug, date, shortDesc, src, alt);
     }
-  } catch (error) {}
+  } catch (error) {
+    container.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
+      <p style="font-size: 1.2rem">${error}</p></div>`;
+  }
 }
 fetchContent();
 

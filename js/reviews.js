@@ -1,10 +1,12 @@
 const url =
   "https://www.rainydaysshop.no/wp-json/wp/v2/posts?categories=23&per_page=";
 let postResults = 10;
-const container = document.querySelector(".post_container");
+const container = document.querySelector(".reviews");
 const hero = document.querySelector(".hero");
 const viewMoreBtn = document.querySelector(".view-more");
 const viewLessBtn = document.querySelector(".view-less");
+
+container.innerHTML = `<div class="loader"></div>`;
 
 async function fetchContent() {
   try {
@@ -38,8 +40,13 @@ async function fetchContent() {
       const li = Array.from(liElements).map((li) => li.outerHTML);
 
       createHTML(title, id, slug, date, shortDesc, src, alt);
+
+      viewMoreBtn.style.display = "block";
     }
-  } catch (error) {}
+  } catch (error) {
+    container.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
+      <p style="font-size: 1.2rem">${error}</p></div>`;
+  }
 }
 fetchContent();
 
@@ -64,10 +71,9 @@ viewMoreBtn.addEventListener("click", () => {
   postResults = 30;
   container.innerHTML = "";
   fetchContent();
-  viewMoreBtn.style.display = "none";
-  viewLessBtn.style.display = "block";
-
   setTimeout(() => {
+    viewMoreBtn.style.display = "none";
+    viewLessBtn.style.display = "block";
     document.documentElement.scrollIntoView({
       behavior: "smooth",
       block: "end",
@@ -79,6 +85,12 @@ viewLessBtn.addEventListener("click", () => {
   postResults = 10;
   container.innerHTML = "";
   fetchContent();
-  viewLessBtn.style.display = "none";
-  viewMoreBtn.style.display = "block";
+  setTimeout(() => {
+    viewLessBtn.style.display = "none";
+    viewMoreBtn.style.display = "block";
+    document.documentElement.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  }, 1000);
 });
