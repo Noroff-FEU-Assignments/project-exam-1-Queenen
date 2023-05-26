@@ -40,7 +40,7 @@ function validateForm(event) {
     container.innerHTML = `<div class="loader"></div>`;
     setTimeout(() => {
       container.innerHTML = `<div class="subscribed">
-        <p class="brown">You're a subscriber!</p>
+        <p>You're a subscriber!</p>
         <p>I appreciate the support ♡</p></div>`;
     }, 1500);
   }

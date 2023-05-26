@@ -14,7 +14,6 @@ html {
   --navigation: #f1efee;
   --button: #ffac30;
   --button-hover: #e7692e;
-  --brown: #a65519;
   --overlay: rgb(213, 213, 213);
   --light-gray: rgb(236, 236, 236);
 }
@@ -70,16 +69,6 @@ h1 {
 
 .icon {
   width: 2rem;
-}
-
-.hero_img {
-  display: block;
-  width: 100%;
-  font-size: 0;
-}
-
-.brown {
-  color: var(--brown);
 }
 
 .bold,
@@ -148,40 +137,13 @@ hr {
   border: 1.5px solid whitesmoke;
 }
 
-/* HEADER */
-
-header {
-  padding: 2rem 3rem;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  align-items: center;
-  width: 100%;
-  z-index: 3;
-}
-
-.logo {
-  margin-top: 0.5rem;
-  width: 60%;
-}
-
-header nav {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  text-align: right;
-  top: 90%;
-  right: 0;
-  z-index: 2;
-}
-
-header nav a {
-  margin: 0.5rem 0;
-  padding: 0.5rem 3rem 0.5rem 5rem;
-}
-
 .hero {
   position: relative;
+}
+.hero_img {
+  display: block;
+  width: 100%;
+  font-size: 0;
 }
 
 .hero_title {
@@ -192,191 +154,7 @@ header nav a {
   transform: translate(-25%, -50%);
 }
 
-/* INDEX */
-
-/*subscribe section*/
-
-.subscribe {
-  font-family: "Lato_bold";
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-  background-color: var(--navigation);
-}
-
-.subscribe_button {
-  border-radius: 0.5rem;
-  padding: 0.7rem 0;
-}
-
-.sub_input {
-  width: 70%;
-}
-
-.sub_input input {
-  padding: 0.25rem;
-  border-style: none;
-  border-radius: 0.5rem;
-}
-
-.sub_input label {
-  display: inline-block;
-  width: 20%;
-}
-
-.sub_name {
-  margin-bottom: 1rem;
-}
-
-.sub_info {
-  margin-top: -0.6rem;
-}
-
-.sub_info p {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.sub_info {
-  width: auto;
-}
-
-/**/
-
-.subscribed {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 0.5rem;
-}
-
-.subscribed p:first-child {
-  margin-bottom: 1rem;
-}
-
-/*slider section*/
-.index_posts {
-  padding: 4rem;
-  background-color: whitesmoke;
-}
-
-.index_posts h2 {
-  margin-bottom: 7rem;
-}
-.post_container {
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-}
-
-.slide {
-  width: 80%;
-  height: 35rem;
-  font-family: "Lato";
-  border-radius: 2rem;
-  line-height: 2rem;
-  background-color: white;
-}
-
-.slide:hover {
-  text-decoration: none;
-}
-
-.slide_img {
-  border-radius: 2rem 2rem 0 0;
-  width: 100%;
-  object-fit: cover;
-}
-
-.slide p {
-  padding: 1.5rem 2rem 0 2rem;
-}
-
-.slide p:last-of-type {
-  padding-bottom: 3rem;
-}
-
-.slide_2,
-.slide_3 {
-  display: none;
-}
-
-.progress_bar {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-.dot {
-  background-color: lightgrey;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-}
-
-.dot-2 {
-  margin: 0 3rem 0 3rem;
-}
-
-.selected {
-  background-color: gray;
-}
-
-.post-2,
-.post-3 {
-  display: none;
-}
-
-.index_post_container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.index_post_text {
-  padding: 2rem 3rem;
-  line-height: 2rem;
-}
-
-.index_post_text > p {
-  margin-bottom: 0.5rem;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
-
-#caption {
-  margin: auto;
-  display: block;
-  width: 100%;
-  max-width: 700px;
-  font-size: 1.6rem;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-}
-
-/* LOADER */
+/* loader */
 
 .loader {
   width: 48px;
@@ -410,6 +188,131 @@ header nav a {
   }
 }
 
+/* HEADER */
+
+header {
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  align-items: center;
+  width: 100%;
+  z-index: 3;
+}
+
+.logo {
+  margin-top: 0.5rem;
+  width: 60%;
+}
+
+header nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  text-align: right;
+  top: 90%;
+  right: 0;
+  z-index: 2;
+}
+
+header nav a {
+  margin: 0.5rem 0;
+  padding: 0.5rem 3rem 0.5rem 5rem;
+}
+
+/* INDEX */
+
+/* subscribe section */
+.subscribe {
+  font-family: "Lato_bold";
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  background-color: var(--navigation);
+}
+
+.subscribe_button {
+  border-radius: 0.5rem;
+  padding: 0.7rem 0;
+}
+.subscribed {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.subscribed p:first-child {
+  margin-bottom: 1rem;
+  color: var(--button);
+}
+.sub_input {
+  width: 70%;
+}
+
+.sub_input input {
+  padding: 0.25rem;
+  border-style: none;
+  border-radius: 0.5rem;
+}
+
+.sub_input label {
+  display: inline-block;
+  width: 20%;
+}
+.sub_name {
+  margin-bottom: 1rem;
+}
+
+.sub_info {
+  margin-top: -0.6rem;
+}
+
+.sub_info p {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--button);
+}
+
+.sub_info {
+  width: auto;
+}
+
+/* post slider */
+.index_posts {
+  padding: 4rem;
+  background-color: whitesmoke;
+}
+.index_posts h2 {
+  margin-bottom: 7rem;
+}
+.post_container {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.progress_bar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.dot {
+  background-color: lightgrey;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+
+.dot-2 {
+  margin: 0 3rem 0 3rem;
+}
+.selected {
+  background-color: gray;
+}
+
+/* FOOTER */
+
 footer {
   padding: 3rem;
   background-color: var(--navigation);
@@ -439,7 +342,6 @@ footer p {
   line-height: 2rem;
   background-color: whitesmoke;
 }
-
 .promo_info > * {
   display: block;
   margin: 0 auto;
@@ -449,35 +351,30 @@ footer p {
   font-family: "Ledger";
   margin-bottom: 2rem;
 }
-
 .promo_info h3,
 .promo_section h3 {
   font-family: "Lato_bold";
   margin-bottom: 2rem;
 }
-
 .coupon {
   padding: 5rem 3rem;
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
 }
-
 .coupon:nth-child(odd) {
   border-bottom: 0.2rem solid whitesmoke;
 }
-
 .coupon div {
   width: 60%;
 }
-
 .promo_logo {
   width: 10rem;
   align-self: center;
   margin-right: 2rem;
 }
 
-/* about */
+/* ABOUT */
 .about_introduction,
 .about_info {
   max-width: 25rem;
@@ -492,7 +389,7 @@ footer p {
   margin-bottom: 2rem;
 }
 
-/* contact */
+/* CONTACT */
 .contact_intro {
   padding: 5rem;
   line-height: 2.5rem;
@@ -559,13 +456,23 @@ footer p {
   margin-bottom: 2rem;
 }
 
-/* REVIEWS */
+/* REVIEWS/GUIDE */
+
 .reviews {
   background-color: whitesmoke;
   padding: 5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.view-more,
+.view-less {
+  background-color: gray;
+}
+
+.view-less {
+  display: none;
 }
 
 .post_card {
@@ -605,52 +512,16 @@ footer p {
   line-height: 2rem;
   height: 6rem;
 }
-
-.index_post {
-  width: 70%;
-  background-color: white;
-  border-radius: 2rem;
-  height: fit-content;
-  position: relative;
-  margin: 0 0.5rem 5rem 0.5rem;
-}
-
-.index_post .title {
-  margin-top: 2rem;
-  height: 4rem;
-}
-
-.index_post p {
-  display: block;
-  margin: 0 auto 2rem auto;
-  max-width: 25rem;
-  padding: 0 2rem;
-}
-
-.review_info {
-  font-family: "Lato";
-}
-
-.index_post p.review_info {
-  margin-bottom: 3rem;
-}
-
-.index_post .italic {
-  margin-top: 1rem;
-}
-
-.index_post img {
-  width: 100%;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
-}
-
 .post_title {
   max-width: 25rem;
   height: 7rem;
 }
+.review_info {
+  font-family: "Lato";
+}
 
-/* GUIDE/REVIEW POSTS */
+/* POSTS */
+
 .post_info {
   position: absolute;
   left: 50%;
@@ -661,7 +532,6 @@ footer p {
   text-align: center;
   line-height: 3rem;
 }
-
 .post_info h1 {
   color: black;
   font-size: 2rem;
@@ -674,21 +544,6 @@ footer p {
   letter-spacing: 0.2rem;
   color: black;
 }
-
-.hero_post {
-  background-color: var(--overlay);
-  width: auto;
-}
-
-.img_post {
-  opacity: 40%;
-}
-
-.description p {
-  margin-bottom: 2rem;
-  line-height: 2.5rem;
-}
-
 .rg_tips,
 .rg_content {
   padding: 5rem 5rem 5rem 5rem;
@@ -701,35 +556,14 @@ footer p {
   display: block;
   margin: auto auto;
 }
-
-.rg-post_container h2 {
-  margin-bottom: 2rem;
-  font-family: "Lato_bold";
+.hero_post {
+  background-color: var(--overlay);
+  width: auto;
 }
 
-li {
-  list-style: inside;
-  margin-bottom: 1rem;
+.img_post {
+  opacity: 40%;
 }
-
-ol {
-  list-style: inside;
-}
-
-ol li {
-  list-style: decimal;
-}
-
-li::before {
-  content: "";
-  width: 0.5rem;
-  display: inline-block;
-}
-
-ol > li::marker {
-  font-family: "Lato_bold";
-}
-
 .return {
   margin-left: -0.5rem;
   margin-bottom: 3rem;
@@ -744,16 +578,6 @@ ol > li::marker {
 .return img {
   margin-right: 1rem;
 }
-
-.view-more,
-.view-less {
-  background-color: gray;
-}
-
-.view-less {
-  display: none;
-}
-
 .description h2 {
   margin: 5rem 0 3rem 0;
 }
@@ -768,18 +592,6 @@ ol > li::marker {
 }
 
 /* MEDIA QUERIES */
-
-@media screen and (min-width: 450px) {
-  .slide {
-    width: 40%;
-  }
-  .slide_2 {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 500px) {
-}
 
 /*Small devices (landscape phones, 576px and up)*/
 @media screen and (min-width: 576px) {
@@ -798,19 +610,6 @@ ol > li::marker {
   .subscribe {
     padding: 2rem 20%;
   }
-  .slide {
-    width: 30%;
-  }
-  .slide_3 {
-    display: block;
-  }
-  .index_post {
-    width: 50%;
-    margin-bottom: 2rem;
-  }
-  .post-2 {
-    display: block;
-  }
   .post_card {
     width: 50%;
   }
@@ -827,9 +626,7 @@ ol > li::marker {
 
 /*Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
-  .error,
-  .smaller,
-  button {
+  .error button {
     font-size: 1.4rem;
   }
   p,
@@ -890,13 +687,6 @@ ol > li::marker {
   .rg_content > * {
     max-width: 40rem;
   }
-
-  .index_post {
-    width: 40%;
-  }
-  .post-3 {
-    display: block;
-  }
   .post_card {
     width: 40%;
   }
@@ -904,10 +694,6 @@ ol > li::marker {
 
 /*Large devices (desktops, 992px and up)*/
 @media screen and (min-width: 992px) {
-  .index_post {
-    width: 30%;
-    margin-bottom: 2rem;
-  }
   .reviews {
     padding: 5rem 3rem;
   }
@@ -920,7 +706,6 @@ ol > li::marker {
 /*Extra large devices (large desktops, 1200px and up)*/
 @media screen and (min-width: 1200px) {
   .error,
-  .smaller,
   button {
     font-size: 1.6rem;
   }
