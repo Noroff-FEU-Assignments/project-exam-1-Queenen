@@ -627,6 +627,10 @@ footer p {
   padding: 0 2rem;
 }
 
+.review_info {
+  font-family: "Lato";
+}
+
 .index_post p.review_info {
   margin-bottom: 3rem;
 }

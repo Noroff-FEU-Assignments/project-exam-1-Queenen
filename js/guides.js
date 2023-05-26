@@ -44,7 +44,7 @@ fetchContent();
 
 function createHTML(title, id, slug, date, shortDesc, src, alt) {
   container.innerHTML += `
-  <div class="post_card">
+  <a href="post.html?id=${id}&name=${slug}"class="post_card">
     <img src="${src}" alt="${alt}" />
     <center>
       <p class="bold post_title">${title}</p>
@@ -54,9 +54,7 @@ function createHTML(title, id, slug, date, shortDesc, src, alt) {
         ${shortDesc}
       </p>
     </center>
-    <a href="post.html?id=${id}&name=${slug}" class="read-more"
-      ><button>READ MORE</button></a
-    >
-  </div>
+    <button>READ MORE</button>
+  </a>
   `;
 }

@@ -203,17 +203,15 @@ async function fetchContent() {
 
       //Create HTML of results
       function createHTML(title, id, slug, date, src, alt, shortDesc, slide) {
-        slide.innerHTML += `<div class="post_card">
+        slide.innerHTML += `<a href="post.html?id=${id}&name=${slug}"class="post_card">
                   <img src="${src}" alt="${alt}"/>
                   <center>
                   <p class="bold title">${title}</p>
                   <p class="italic">${date}</p>
                   <p class="review_info">${shortDesc}</p>
                   </center>
-                  <a href="post.html?id=${id}&name=${slug}" class="read-more">
                   <button>READ MORE</button>
-                  </a>
-                  </div>`;
+                  </a>`;
       }
     }
   } catch (error) {
