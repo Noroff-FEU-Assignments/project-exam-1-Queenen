@@ -55,14 +55,14 @@ async function fetchContent() {
 function reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
   console.log(categoryUrl);
   postHero.innerHTML = `
-  <div class="post_info">
-    <h1 class="bold">${title}</h1>
-    <p class="italic">${date}</p>
-  </div>
-  <img
-    src="${src}"
-    alt="${alt}"
-    class="hero_img img_post" id="myImg" />
+    <div class="post_info">
+      <h1 class="bold">${title}</h1>
+      <p class="italic">${date}</p>
+    </div>
+    <img
+      src="${src}"
+      alt="${alt}"
+      class="hero_img img_post" id="myImg" onclick="openModal('${src}', '${alt}')"/>
     </div>
   `;
   postContainer.innerHTML = `
@@ -86,14 +86,14 @@ function reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
 
 function guideHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
   postHero.innerHTML = `
-  <div class="post_info">
-    <h1 class="bold">${title}</h1>
-    <p class="italic">${date}</p>
-  </div>
-  <img
-    src="${src}"
-    alt="${alt}"
-    class="hero_img img_post" id="myImg" />
+    <div class="post_info">
+      <h1 class="bold">${title}</h1>
+      <p class="italic">${date}</p>
+    </div>
+    <img
+      src="${src}"
+      alt="${alt}"
+      class="hero_img img_post" id="myImg" onclick="openModal('${src}', '${alt}')"/>
     </div>
   `;
   postContainer.innerHTML = `
@@ -109,5 +109,29 @@ function guideHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
   </div>
   `;
 }
+
+function openModal(src, alt) {
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("imgModal");
+
+  modal.style.display = "block";
+  modalImg.src = src;
+  modalImg.alt = alt;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("myModal");
+  const closeBtn = document.getElementsByClassName("close")[0];
+
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+});
 
 fetchContent();
