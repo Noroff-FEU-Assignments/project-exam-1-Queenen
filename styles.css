@@ -568,7 +568,7 @@ footer p {
   justify-content: space-evenly;
 }
 
-.reviews .post_card {
+.post_card {
   width: 80%;
   line-height: 3rem;
   background-color: white;
@@ -579,20 +579,22 @@ footer p {
   margin: 0 2rem 5rem 0;
 }
 
-.reviews .post_card center {
+.post_card center {
   padding: 0 2rem;
+  height: 20rem;
 }
 
-.reviews .post_card button {
+.post_card button {
   position: absolute;
   width: 100%;
   left: 0;
   right: 0;
+  bottom: 0;
   display: block;
   margin: 0 auto;
 }
 
-.reviews .post_card img {
+.post_card img {
   width: 100%;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
@@ -601,6 +603,7 @@ footer p {
 .post_card .review_info {
   margin: 2rem 0;
   line-height: 2rem;
+  height: 6rem;
 }
 
 .index_post {
@@ -647,7 +650,7 @@ footer p {
 .post_info {
   position: absolute;
   left: 50%;
-  bottom: 25%;
+  bottom: 30%;
   transform: translate(-50%, 50%);
   width: 80%;
   z-index: 1;
@@ -657,12 +660,10 @@ footer p {
 
 .post_info h1 {
   color: black;
-}
-
-.post_info h1 {
   font-size: 2rem;
   margin-bottom: 2rem;
-  font-family: "Ledger";
+  letter-spacing: 0.2rem;
+  font-family: "Lato_bold";
 }
 
 .post_info p {
@@ -725,6 +726,7 @@ ol > li::marker {
 }
 
 .return {
+  margin-left: -0.5rem;
   margin-bottom: 3rem;
   display: flex;
   align-items: center;
@@ -736,6 +738,27 @@ ol > li::marker {
 
 .return img {
   margin-right: 1rem;
+}
+
+.view-more,
+.view-less {
+  background-color: gray;
+}
+
+.view-less {
+  display: none;
+}
+
+.description h2 {
+  margin: 5rem 0 3rem 0;
+}
+
+.description ol {
+  margin-top: 4rem;
+}
+
+.description li:nth-child(even) {
+  color: var(--button-hover);
 }
 
 /* MEDIA QUERIES */
@@ -782,7 +805,7 @@ ol > li::marker {
   .post-2 {
     display: block;
   }
-  .reviews .post_card {
+  .post_card {
     width: 50%;
   }
   .progress_bar {
@@ -868,7 +891,7 @@ ol > li::marker {
   .post-3 {
     display: block;
   }
-  .reviews .post_card {
+  .post_card {
     width: 40%;
   }
 }
@@ -882,7 +905,7 @@ ol > li::marker {
   .reviews {
     padding: 5rem 3rem;
   }
-  .reviews .post_card {
+  .post_card {
     width: 30%;
     margin-bottom: 3rem;
   }

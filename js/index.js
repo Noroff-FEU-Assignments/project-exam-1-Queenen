@@ -108,114 +108,112 @@ function slide3() {
 
 // Slider content
 
-const url = "https://www.rainydaysshop.no/wp-json/wp/v2/posts";
+const url = "https://www.rainydaysshop.no/wp-json/wp/v2/posts/?per_page=30";
 const postContainer = document.querySelector(".post_container");
-const indexPost = document.querySelector(".index_post");
+const card = document.querySelector(".post_card");
 
 async function fetchContent() {
   try {
     const response = await fetch(url);
     const results = await response.json();
 
-    for (let index = 0; index < results.length; index++) {
-      var postSlug = results[index].slug;
-      var postId = results[index].id;
-      const images = results[index].content.rendered;
+    for (let i = 0; i < results.length; i++) {
+      const title = results[i].title.rendered;
+      const id = results[i].id;
+      const slug = results[i].slug;
+      const date = results[i].date.substring(0, 10);
+      const shortDesc = results[i].excerpt.rendered.substring(3, 70) + " ...";
+      const categories = results[i].categories[0];
+      let categoryUrl;
+      const images = results[i].content.rendered;
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = images;
       const imgTags = tempDiv.getElementsByTagName("img");
-      const date = results[index].date.substring(0, 10);
-      const title = results[index].title.rendered;
-      let description = results[index].excerpt.rendered;
-      description = description.substring(3, 65) + " ...";
-
-      for (let index = 0; index < imgTags.length; index++) {
-        //leave as "var" for accessibility!
-        var imgSrc = imgTags[index].src;
-        var altText = imgTags[index].alt;
+      //
+      for (let i = 0; i < imgTags.length; i++) {
+        var src = imgTags[i].src;
+        var alt = imgTags[i].alt;
       }
 
-      // Amount of posts by mediaquery
-
-      // phone
-
+      //Amount of posts based of media queries
       if (
         window.matchMedia("(min-width:0px) and (max-width: 767px)").matches &&
-        index <= 0
+        i <= 0
       ) {
-        createHTML(imgSrc, altText, title, date, description, firstSlide);
+        createHTML(title, id, slug, date, src, alt, shortDesc, firstSlide);
         continue;
       }
 
       if (
         window.matchMedia("(min-width:0px) and (max-width: 767px)").matches &&
-        index <= 1
+        i <= 1
       ) {
-        createHTML(imgSrc, altText, title, date, description, secondSlide);
+        createHTML(title, id, slug, date, src, alt, shortDesc, secondSlide);
         continue;
       }
 
       if (
         window.matchMedia("(min-width:0px) and (max-width: 767px)").matches &&
-        index <= 2
+        i <= 2
       ) {
-        createHTML(imgSrc, altText, title, date, description, thirdSlide);
+        createHTML(title, id, slug, date, src, alt, shortDesc, thirdSlide);
         continue;
       }
 
       // tablet
       if (
-        window.matchMedia("(min-width:768px) and (max-width: 991px)").matches &&
-        index <= 1
+        window.matchMedia("(min-width:767px) and (max-width: 990px)").matches &&
+        i <= 1
       ) {
-        createHTML(imgSrc, altText, title, date, description, firstSlide);
+        createHTML(title, id, slug, date, src, alt, shortDesc, firstSlide);
         continue;
       }
 
       if (
-        window.matchMedia("(min-width:768px) and (max-width: 991px)").matches &&
-        index <= 3
+        window.matchMedia("(min-width:767px) and (max-width: 990px)").matches &&
+        i <= 3
       ) {
-        createHTML(imgSrc, altText, title, date, description, secondSlide);
+        createHTML(title, id, slug, date, src, alt, shortDesc, secondSlide);
         continue;
       }
 
       if (
-        window.matchMedia("(min-width:768px) and (max-width: 991px)").matches &&
-        index <= 5
+        window.matchMedia("(min-width:767px) and (max-width: 990px)").matches &&
+        i <= 5
       ) {
-        createHTML(imgSrc, altText, title, date, description, thirdSlide);
+        createHTML(title, id, slug, date, src, alt, shortDesc, thirdSlide);
         continue;
       }
 
       // deskop
-      if (window.matchMedia("(min-width: 992px)").matches && index <= 2) {
-        createHTML(imgSrc, altText, title, date, description, firstSlide);
+      if (window.matchMedia("(min-width: 991px)").matches && i <= 2) {
+        createHTML(title, id, slug, date, src, alt, shortDesc, firstSlide);
         continue;
       }
 
-      if (window.matchMedia("(min-width: 992px)").matches && index <= 5) {
-        createHTML(imgSrc, altText, title, date, description, secondSlide);
+      if (window.matchMedia("(min-width: 991px)").matches && i <= 5) {
+        createHTML(title, id, slug, date, src, alt, shortDesc, secondSlide);
         continue;
       }
 
-      if (window.matchMedia("(min-width: 992px)").matches && index <= 8) {
-        createHTML(imgSrc, altText, title, date, description, thirdSlide);
+      if (window.matchMedia("(min-width: 991px)").matches && i <= 8) {
+        createHTML(title, id, slug, date, src, alt, shortDesc, thirdSlide);
         continue;
       }
 
-      function createHTML(imgSrc, altText, title, date, description, slide) {
-        slide.innerHTML += `<div class="index_post">
-                    <img src="${imgSrc}" alt="${altText}"/>
-                    <center>
-                    <p class="bold title">${title}</p>
-                    <p class="italic">${date}</p>
-                    <p class="review_info">${description}</p>
-                    </center>
-                    <a href="post.html?id=${postId}&name=${postSlug}" class="read-more">
-                    <button>READ MORE</button>
-                    </a>
-                    </div>`;
+      //Create HTML of results
+      function createHTML(title, id, slug, date, src, alt, shortDesc, slide) {
+        slide.innerHTML += `<div class="post_card">
+                  <img src="${src}" alt="${alt}"/>
+                  <center>
+                  <p class="bold title">${title}</p>
+                  <p class="italic">${date}</p>
+                  <p class="review_info">${shortDesc}</p>
+                  </center>
+                  <a href="post.html?id=${id}&name=${slug}" class="read-more">
+                  <button>READ MORE</button>
+                  </a>
+                  </div>`;
       }
     }
   } catch (error) {

@@ -14,82 +14,100 @@ async function fetchContent() {
 
     const title = results.title.rendered;
     const date = results.date.substring(0, 10);
-    const description = results.excerpt.rendered;
-    const images = results.content.rendered;
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = images;
-    const imgTags = tempDiv.getElementsByTagName("img");
-    const imgSrc = imgTags[0].src;
-    const altText = imgTags[0].alt;
     let categories = results.categories[0];
     let categoryUrl;
+    let returnText;
+    //
+    const content = results.content.rendered;
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
 
-    function checkCategory() {
-      if (categories === 22) {
-        categories = "Guides";
-        categoryUrl = "/guides.html";
-      }
-      if (categories === 23) {
-        categories = "Reviews";
-        categoryUrl = "/reviews.html";
-      }
+    // Extracting useful content from data
+    const imgElements = tempDiv.querySelectorAll("img");
+    const h2Elements = tempDiv.querySelectorAll("h2");
+    const pElements = tempDiv.querySelectorAll("p");
+    const liElements = tempDiv.querySelectorAll("li");
+
+    // Store the extracted elements in separate variables or arrays
+    const src = Array.from(imgElements).map((img) => img.getAttribute("src"));
+    const alt = Array.from(imgElements).map((img) => img.getAttribute("alt"));
+    const h2 = Array.from(h2Elements).map((h2) => h2.outerHTML);
+    const p = Array.from(pElements).map((p) => p.outerHTML);
+    const li = Array.from(liElements).map((li) => li.outerHTML);
+
+    if (categories === 22) {
+      returnText = "Guides";
+      categoryUrl = "/guides.html";
+      guideHTML(title, date, src, alt, li, categoryUrl, returnText);
     }
-    checkCategory();
-
-    postHero.innerHTML = `
-      <div class="post_info">
-        <h1 class="bold">${title}</h1>
-        <p class="italic">${date}</p>
-      </div>
-      <img
-        src="${imgSrc}"
-        alt="${altText}"
-        class="hero_img img_post" id="myImg" />
-        <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
-        </div>
-      `;
-
-    postContainer.innerHTML = `
-      <div class="rg_content">
-        <a href="${categoryUrl}" class="return"
-          ><img
-            src="/images/icons/arrow-left-circle.svg"
-            alt="return to reviews" />${categories}</a
-        >
-        <div class="description">
-          ${description}
-        </div>
-      </div>
-      `;
-
-    // Enlarge image on click
-    var modal = document.getElementById("myModal");
-
-    var postImg = document.getElementById("post_img");
-    var img = document.getElementById("myImg");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-
-    postImg.addEventListener("click", openImg);
-    modal.addEventListener("click", closeImg);
-
-    function openImg() {
-      modal.style.display = "block";
-      modalImg.src = imgSrc;
-      captionText.innerHTML = altText;
-    }
-
-    function closeImg() {
-      modal.style.display = "none";
-      postImg.removeEventListener("click", openImg);
+    if (categories === 23) {
+      returnText = "Reviews";
+      categoryUrl = "/reviews.html";
+      reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p);
     }
   } catch (error) {
     postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
     <p class="smaller">${error}</p></div>`;
+    console.log(error);
   }
+}
+
+function reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
+  console.log(categoryUrl);
+  postHero.innerHTML = `
+  <div class="post_info">
+    <h1 class="bold">${title}</h1>
+    <p class="italic">${date}</p>
+  </div>
+  <img
+    src="${src}"
+    alt="${alt}"
+    class="hero_img img_post" id="myImg" />
+    </div>
+  `;
+  postContainer.innerHTML = `
+  <div class="rg_content">
+    <a href="${categoryUrl}" class="return"
+      ><img
+        src="/images/icons/arrow-left-circle.svg"
+        alt="return to reviews" />${returnText}</a
+    >
+    <div class="description">
+    ${h2[0]}
+    ${p[0]}
+    ${h2[1]}
+    ${p[1]}
+    ${h2[2]}
+    <ol>${li}</ol>
+    </div>
+  </div>
+  `;
+}
+
+function guideHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
+  postHero.innerHTML = `
+  <div class="post_info">
+    <h1 class="bold">${title}</h1>
+    <p class="italic">${date}</p>
+  </div>
+  <img
+    src="${src}"
+    alt="${alt}"
+    class="hero_img img_post" id="myImg" />
+    </div>
+  `;
+  postContainer.innerHTML = `
+  <div class="rg_content">
+    <a href="${categoryUrl}" class="return"
+      ><img
+        src="/images/icons/arrow-left-circle.svg"
+        alt="return to reviews" />${returnText}</a
+    >
+    <div class="description">
+    <ol>${li}</ol>
+    </div>
+  </div>
+  `;
 }
 
 fetchContent();

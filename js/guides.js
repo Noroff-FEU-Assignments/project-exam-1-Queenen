@@ -1,69 +1,62 @@
-const hero = document.querySelector(".hero");
-const container = document.querySelector(".reviews");
+// Slider content
 
-const url = "https://www.rainydaysshop.no/wp-json/wp/v2/posts";
-let postsUrl = "http://127.0.0.1:5501/post.html";
+const url =
+  "https://www.rainydaysshop.no/wp-json/wp/v2/posts?categories=22&per_page=10";
+const container = document.querySelector(".post_container");
+const hero = document.querySelector(".hero");
 
 async function fetchContent() {
   try {
     const response = await fetch(url);
     const results = await response.json();
 
-    for (let index = 0; index < results.length; index++) {
-      //console.log(results[index]);
-      const postId = results[index].id;
-      const postSlug = results[index].slug;
-      const title = results[index].title.rendered;
-      const date = results[index].date.substring(0, 10);
-      const images = results[index].content.rendered;
+    container.innerHTML = "";
+
+    for (let i = 0; i < results.length; i++) {
+      const title = results[i].title.rendered;
+      const slug = results[i].slug;
+      const id = results[i].id;
+      const date = results[i].date.substring(0, 10);
+      const shortDesc = results[i].excerpt.rendered.substring(3, 70) + " ...";
+      //
+      const content = results[i].content.rendered;
       const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = images;
-      const imgTags = tempDiv.getElementsByTagName("img");
-      let description = results[index].excerpt.rendered;
-      description = description.substring(3, 65) + " ...";
+      tempDiv.innerHTML = content;
 
-      let categories = results[index].categories[0];
-      let categoryUrl;
+      // Extracting useful content from data
+      const imgElements = tempDiv.querySelectorAll("img");
+      const h2Elements = tempDiv.querySelectorAll("h2");
+      const pElements = tempDiv.querySelectorAll("p");
+      const liElements = tempDiv.querySelectorAll("li");
 
-      for (let index = 0; index < imgTags.length; index++) {
-        //leave as "var" for accessibility!
-        var imgSrc = imgTags[index].src;
-        var altText = imgTags[index].alt;
-      }
+      // Store the extracted elements in separate variables or arrays
+      const src = Array.from(imgElements).map((img) => img.getAttribute("src"));
+      const alt = Array.from(imgElements).map((img) => img.getAttribute("alt"));
+      const h2 = Array.from(h2Elements).map((h2) => h2.outerHTML);
+      const p = Array.from(pElements).map((p) => p.outerHTML);
+      const li = Array.from(liElements).map((li) => li.outerHTML);
 
-      if (categories === 22) {
-        categories = "Guides";
-        categoryUrl = "/guides.html";
-        hero.innerHTML = `
-      <h1 class="hero_title">${categories}</h1>
-      <img
-        src="/images/hero/guides.jpg"
-        alt="view of a city in the sunset"
-        class="hero_img" />
-      `;
-
-        container.innerHTML += `
-      <div class="post_card">
-        <img src="${imgSrc}" alt="${altText}" />
-        <center>
-          <p class="bold post_title">${title}</p>
-          <p class="italic">${date}</p>
-
-          <p class="review_info">
-            ${description}
-          </p>
-        </center>
-        <a href="post.html?id=${postId}&name=${postSlug}" class="read-more"
-          ><button>READ MORE</button></a
-        >
-      </div>
-      `;
-      }
+      createHTML(title, id, slug, date, shortDesc, src, alt);
     }
-  } catch (error) {
-    container.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
-    <p class="smaller">${error}</p></div>`;
-  }
+  } catch (error) {}
 }
-
 fetchContent();
+
+function createHTML(title, id, slug, date, shortDesc, src, alt) {
+  container.innerHTML += `
+  <div class="post_card">
+    <img src="${src}" alt="${alt}" />
+    <center>
+      <p class="bold post_title">${title}</p>
+      <p class="italic">${date}</p>
+
+      <p class="review_info">
+        ${shortDesc}
+      </p>
+    </center>
+    <a href="post.html?id=${id}&name=${slug}" class="read-more"
+      ><button>READ MORE</button></a
+    >
+  </div>
+  `;
+}
