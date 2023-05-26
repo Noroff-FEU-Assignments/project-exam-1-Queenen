@@ -236,6 +236,7 @@ header nav a {
   border-radius: 0.5rem;
   padding: 0.7rem 0;
 }
+
 .subscribed {
   display: flex;
   flex-direction: column;
@@ -689,6 +690,9 @@ footer p {
   }
   .post_card {
     width: 40%;
+  }
+  .subscribe .loader {
+    margin-top: 1.5rem;
   }
 }
 
