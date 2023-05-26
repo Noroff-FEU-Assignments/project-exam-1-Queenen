@@ -140,6 +140,10 @@ button:hover {
   cursor: pointer;
 }
 
+button:hover {
+  background-color: var(--button-hover);
+}
+
 hr {
   border: 1.5px solid whitesmoke;
 }
@@ -538,6 +542,7 @@ footer p {
 
 .contact_form button {
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .contact_form textarea {
