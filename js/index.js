@@ -11,7 +11,7 @@ const subscribe = document.querySelector(".subscribe");
 
 function validateForm(event) {
   event.preventDefault();
-  if (checkLength(nameInput.value, 5) === true) {
+  if (checkLength(nameInput.value, 4) === true) {
     nameError.style.display = "none";
   } else {
     nameError.style.display = "block";
@@ -25,7 +25,7 @@ function validateForm(event) {
 
   if (
     validateEmail(email.value) === false &&
-    checkLength(nameInput.value, 5) === false &&
+    checkLength(nameInput.value, 4) === false &&
     window.matchMedia("(min-width: 768px)")
   ) {
     infoDiv.style.marginTop = "2rem";
@@ -35,7 +35,7 @@ function validateForm(event) {
   }
   if (
     validateEmail(email.value) === true &&
-    checkLength(nameInput.value, 5) === true
+    checkLength(nameInput.value, 4) === true
   ) {
     container.innerHTML = `<div class="loader"></div>`;
     setTimeout(() => {

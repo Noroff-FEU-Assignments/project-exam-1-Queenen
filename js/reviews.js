@@ -1,5 +1,3 @@
-// Slider content
-
 const url =
   "https://www.rainydaysshop.no/wp-json/wp/v2/posts?categories=23&per_page=";
 let postResults = 10;
@@ -68,6 +66,13 @@ viewMoreBtn.addEventListener("click", () => {
   fetchContent();
   viewMoreBtn.style.display = "none";
   viewLessBtn.style.display = "block";
+
+  setTimeout(() => {
+    document.documentElement.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  }, 1000);
 });
 
 viewLessBtn.addEventListener("click", () => {
