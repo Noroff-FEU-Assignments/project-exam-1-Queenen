@@ -1,5 +1,6 @@
 const postHero = document.querySelector(".hero_post");
 const postContainer = document.querySelector(".rg-post_container");
+let titleHTML = document.querySelector("head title");
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -45,6 +46,8 @@ async function fetchContent() {
       categoryUrl = "/reviews.html";
       reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p);
     }
+
+    titleHTML.innerHTML = `${returnText} | ${title} | Vivid Escapes`;
   } catch (error) {
     postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
     <p class="smaller">${error}</p></div>`;
@@ -53,7 +56,6 @@ async function fetchContent() {
 }
 
 function reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
-  console.log(categoryUrl);
   postHero.innerHTML = `
     <div class="post_info">
       <h1 class="bold">${title}</h1>
@@ -110,6 +112,7 @@ function guideHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
   `;
 }
 
+// Image Modal
 function openModal(src, alt) {
   const modal = document.getElementById("myModal");
   const modalImg = document.getElementById("imgModal");
