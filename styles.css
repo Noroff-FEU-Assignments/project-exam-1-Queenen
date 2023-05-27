@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+*,
+* > * {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -150,7 +156,7 @@ hr {
 .hero_title {
   position: absolute;
   font-family: "Ledger";
-  left: 8rem;
+  left: 6rem;
   top: 90%;
   transform: translate(-25%, -50%);
 }
@@ -214,10 +220,13 @@ header nav {
   top: 90%;
   right: 0;
   z-index: 2;
+  padding-top: 2rem;
+  background-color: rgba(245, 245, 245, 0.636);
+  border-radius: 1rem 0 0 1rem;
 }
 
 header nav a {
-  margin: 0.5rem 0;
+  margin-bottom: 1.5rem;
   padding: 0.5rem 3rem 0.5rem 5rem;
 }
 
@@ -283,7 +292,7 @@ header nav a {
 
 /* post slider */
 .index_posts {
-  padding: 4rem;
+  padding: 5rem;
   background-color: whitesmoke;
 }
 .index_posts h2 {
@@ -295,12 +304,13 @@ header nav a {
   justify-content: space-evenly;
 }
 .post_container .loader {
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 }
 .progress_bar {
-  margin-top: 1rem;
   display: flex;
   justify-content: center;
+  margin: 5rem auto 1rem auto;
+  max-width: 20rem;
 }
 .dot {
   display: none;
@@ -308,10 +318,6 @@ header nav a {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-}
-
-.dot-2 {
-  margin: 0 3rem 0 3rem;
 }
 .selected {
   background-color: gray;
@@ -465,6 +471,7 @@ footer p {
 /* REVIEWS/GUIDE */
 
 .reviews {
+  position: relative;
   background-color: whitesmoke;
   padding: 5rem;
   display: flex;
@@ -476,10 +483,31 @@ footer p {
   margin-top: 3.5rem;
 }
 
+.view-b_wrapper {
+  position: relative;
+  background-color: whitesmoke;
+  margin-top: -7rem;
+  padding-bottom: 5rem;
+}
+
 .view-more,
 .view-less {
-  background-color: gray;
+  width: 50%;
+  left: 0;
+  right: 0;
+  background-color: whitesmoke;
+  color: var(--button);
+  border: 2px solid var(--button);
+  border-radius: 0.5rem;
+  position: absolute;
   display: none;
+}
+
+.view-more:hover,
+.view-less:hover {
+  background-color: whitesmoke;
+  color: var(--button-hover);
+  border-color: var(--button-hover);
 }
 
 .post_card {
@@ -490,7 +518,7 @@ footer p {
   height: fit-content;
   padding-bottom: 3.5rem;
   position: relative;
-  margin: 0 2rem 5rem 0;
+  margin: 0 1rem 5rem 1rem;
 }
 
 .post_card center {
@@ -650,14 +678,8 @@ footer p {
   .post_card {
     width: 50%;
   }
-  .progress_bar {
-    margin-top: 5rem;
-  }
-  header nav {
-    right: 2rem;
-  }
   header nav a {
-    margin: 1.5rem 0;
+    padding-right: 4rem;
   }
 }
 
@@ -691,6 +713,12 @@ footer p {
   .hero {
     height: 400px;
     object-fit: cover;
+  }
+  .index_img {
+    object-position: 50% 25%;
+  }
+  .hero_title {
+    left: 7rem;
   }
   .sub_input input {
     width: 70%;
@@ -730,16 +758,45 @@ footer p {
   .subscribe .loader {
     margin-top: 1.5rem;
   }
+  header nav {
+    padding-top: 0.5rem;
+  }
+  header nav a {
+    margin: 1.5rem 0;
+  }
+  .dot {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .progress_bar {
+    margin-top: 7rem;
+    max-width: 30rem;
+  }
+  .view-b_wrapper {
+    padding: 2rem 0 10rem 0;
+  }
 }
 
 /*Large devices (desktops, 992px and up)*/
 @media screen and (min-width: 992px) {
+  .index_posts {
+    padding: 4rem 6rem;
+  }
   .reviews {
     padding: 5rem 3rem;
   }
   .post_card {
     width: 30%;
     margin-bottom: 3rem;
+  }
+  .hero_title {
+    left: 8rem;
+  }
+  .progress_bar {
+    margin-bottom: 2rem;
+  }
+  .view-b_wrapper {
+    padding-top: 5rem;
   }
 }
 
@@ -766,5 +823,14 @@ footer p {
   h1,
   .post_info h1 {
     font-size: 3.5rem;
+  }
+  header nav {
+    padding: 2rem 0;
+  }
+  header nav a {
+    padding-right: 4.5rem;
+  }
+  .hero_title {
+    left: 9rem;
   }
 }
