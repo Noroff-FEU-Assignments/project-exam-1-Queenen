@@ -18,7 +18,6 @@ async function fetchContent() {
     let categories = results.categories[0];
     let categoryUrl;
     let returnText;
-    //
     const content = results.content.rendered;
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = content;

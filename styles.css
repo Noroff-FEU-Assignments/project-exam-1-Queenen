@@ -55,7 +55,7 @@ input,
 button,
 textarea,
 li {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 a,
@@ -108,7 +108,7 @@ button,
 
 .error {
   display: none;
-  color: red;
+  color: #a30000;
   font-size: 1.2rem;
   font-family: "Lato";
 }
@@ -407,6 +407,10 @@ footer p {
   margin-bottom: 2rem;
 }
 
+.about_introduction h2 {
+  font-family: "Ledger";
+}
+
 /* CONTACT */
 .contact_intro {
   padding: 5rem;
@@ -693,13 +697,6 @@ footer p {
 @media screen and (min-width: 768px) {
   .error button {
     font-size: 1.4rem;
-  }
-  p,
-  label,
-  input,
-  textarea,
-  li {
-    font-size: 1.6rem;
   }
   a,
   h3 {
