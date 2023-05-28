@@ -18,8 +18,8 @@ html {
 
 :root {
   --navigation: #f1efee;
-  --button: #ffac30;
-  --button-hover: #e7692e;
+  --button: #035e5b;
+  --button-hover: #023a4a;
   --overlay: rgb(213, 213, 213);
   --light-gray: rgb(236, 236, 236);
 }
@@ -244,7 +244,14 @@ header nav a {
 
 .subscribe_button {
   border-radius: 0.5rem;
+  background-color: whitesmoke;
+  border: 2px solid var(--button);
+  color: var(--button);
   padding: 0.7rem 0;
+}
+
+.subscribe_button:hover {
+  background-color: #035e5b29;
 }
 
 .subscribed {
@@ -283,7 +290,6 @@ header nav a {
 .sub_info p {
   margin-bottom: 1.5rem;
   text-align: center;
-  color: var(--button);
 }
 
 .sub_info {
@@ -505,7 +511,7 @@ footer p {
 
 .view-more:hover,
 .view-less:hover {
-  background-color: whitesmoke;
+  background-color: #035e5b31;
   color: var(--button-hover);
   border-color: var(--button-hover);
 }
