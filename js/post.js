@@ -35,6 +35,7 @@ async function fetchContent() {
     const p = Array.from(pElements).map((p) => p.outerHTML);
     const li = Array.from(liElements).map((li) => li.outerHTML);
 
+    //Adding new variables based of the categories content
     if (categories === 22) {
       returnText = "Guides";
       categoryUrl = "/guides.html";
@@ -45,13 +46,88 @@ async function fetchContent() {
       categoryUrl = "/reviews.html";
       reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p);
     }
-
+    // Creating a unique title based of post results
     titleHTML.innerHTML = `${returnText} | ${title} | Vivid Escapes`;
   } catch (error) {
-    postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occured, please try again later.</p>
+    postContainer.innerHTML = `<div class="loading_error"><p class="red">Unfortunately an error has occurred, please try again later.</p>
     <p class="smaller">${error}</p></div>`;
     console.log(error);
   }
+}
+
+// Image Modal
+const modal = document.getElementById("myModal");
+const closeBtn = document.getElementsByClassName("close")[0];
+const modalImg = document.getElementById("imgModal");
+
+function openModal(src, alt) {
+  modal.style.display = "block";
+  modalImg.src = src;
+  modalImg.alt = alt;
+
+  modal.focus();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+    modalImg.focus();
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      modalImg.focus();
+    }
+  });
+
+  // Making modal accessible for keyboard users
+  function handleEscapeKey(event) {
+    if (event.keyCode === 27) {
+      modal.style.display = "none";
+      imgPost.focus();
+    }
+  }
+
+  function handleSpaceOrEnterKey(event) {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+      event.preventDefault();
+      openModal(modalImg.src, modalImg.alt);
+    }
+  }
+
+  modalImg.addEventListener("keydown", handleSpaceOrEnterKey);
+  document.addEventListener("keydown", handleEscapeKey);
+});
+
+//Create HTML
+function guideHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
+  postHero.innerHTML = `
+    <div class="post_info">
+      <h1 class="bold">${title}</h1>
+      <p class="italic">${date}</p>
+    </div>
+    <img
+      src="${src}"
+      alt="${alt}"
+      class="hero_img img_post"
+      onclick="openModal('${src}', '${alt}')"
+      tabindex="0"
+    />
+    </div>
+  `;
+  postContainer.innerHTML = `
+    <div class="rg_content">
+      <a href="${categoryUrl}" class="return"
+        ><img
+          src="/images/icons/arrow-left-circle.svg"
+          alt="return to reviews" />${returnText}</a
+      >
+      <div class="description">
+        <ol>${li}</ol>
+      </div>
+    </div>
+  `;
 }
 
 function reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
@@ -63,77 +139,29 @@ function reviewHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
     <img
       src="${src}"
       alt="${alt}"
-      class="hero_img img_post" id="myImg" onclick="openModal('${src}', '${alt}')"/>
+      class="hero_img img_post"
+      onclick="openModal('${src}', '${alt}')"
+      tabindex="0"
+    />
     </div>
   `;
   postContainer.innerHTML = `
-  <div class="rg_content">
-    <a href="${categoryUrl}" class="return"
-      ><img
-        src="/images/icons/arrow-left-circle.svg"
-        alt="return to reviews" />${returnText}</a
-    >
-    <div class="description">
-    ${h2[0]}
-    ${p[0]}
-    ${h2[1]}
-    ${p[1]}
-    ${h2[2]}
-    <ol>${li}</ol>
-    </div>
-  </div>
-  `;
-}
-
-function guideHTML(title, date, src, alt, li, categoryUrl, returnText, h2, p) {
-  postHero.innerHTML = `
-    <div class="post_info">
-      <h1 class="bold">${title}</h1>
-      <p class="italic">${date}</p>
-    </div>
-    <img
-      src="${src}"
-      alt="${alt}"
-      class="hero_img img_post" id="myImg" onclick="openModal('${src}', '${alt}')"/>
+    <div class="rg_content">
+      <a href="${categoryUrl}" class="return"
+        ><img
+          src="/images/icons/arrow-left-circle.svg"
+          alt="return to reviews" />${returnText}</a
+      >
+      <div class="description">
+        ${h2[0]}
+        ${p[0]}
+        ${h2[1]}
+        ${p[1]}
+        ${h2[2]}
+        <ol>${li}</ol>
+      </div>
     </div>
   `;
-  postContainer.innerHTML = `
-  <div class="rg_content">
-    <a href="${categoryUrl}" class="return"
-      ><img
-        src="/images/icons/arrow-left-circle.svg"
-        alt="return to reviews" />${returnText}</a
-    >
-    <div class="description">
-    <ol>${li}</ol>
-    </div>
-  </div>
-  `;
 }
-
-// Image Modal
-function openModal(src, alt) {
-  const modal = document.getElementById("myModal");
-  const modalImg = document.getElementById("imgModal");
-
-  modal.style.display = "block";
-  modalImg.src = src;
-  modalImg.alt = alt;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("myModal");
-  const closeBtn = document.getElementsByClassName("close")[0];
-
-  closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", function (event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-});
 
 fetchContent();

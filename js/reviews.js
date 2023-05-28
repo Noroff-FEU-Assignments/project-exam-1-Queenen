@@ -21,7 +21,6 @@ async function fetchContent() {
       const id = results[i].id;
       const date = results[i].date.substring(0, 10);
       const shortDesc = results[i].excerpt.rendered.substring(3, 70) + " ...";
-      //
       const content = results[i].content.rendered;
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = content;
@@ -49,6 +48,8 @@ async function fetchContent() {
   }
 }
 fetchContent();
+
+//Create HTML
 
 function createHTML(title, id, slug, date, shortDesc, src, alt) {
   container.innerHTML += `

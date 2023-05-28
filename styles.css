@@ -267,6 +267,8 @@ header nav a {
 }
 .sub_input {
   width: 70%;
+  align-self: center;
+  margin-right: 1rem;
 }
 
 .sub_input input {
@@ -284,7 +286,7 @@ header nav a {
 }
 
 .sub_info {
-  margin-top: -0.6rem;
+  margin-top: 1rem;
 }
 
 .sub_info p {
@@ -470,11 +472,8 @@ footer p {
   margin-bottom: 3rem;
 }
 
-.message_sent {
-  padding: 2rem 0;
-}
-
 .message_sent h2 {
+  margin-left: -0.2rem;
   margin-bottom: 2rem;
 }
 
@@ -610,7 +609,6 @@ footer p {
   opacity: 40%;
 }
 .return {
-  margin-left: -0.5rem;
   margin-bottom: 3rem;
   display: flex;
   align-items: center;
@@ -633,7 +631,7 @@ footer p {
 }
 
 .description li:nth-child(even) {
-  color: var(--button-hover);
+  color: var(--button);
 }
 
 /* MODAL */
@@ -681,6 +679,9 @@ footer p {
   }
   .sub_input input {
     width: 70%;
+  }
+  .sub_info {
+    margin-top: -0.5rem;
   }
   .subscribe {
     padding: 2rem 20%;
@@ -731,7 +732,7 @@ footer p {
   }
   .sub_info {
     width: 40%;
-    margin-top: -0.5rem;
+    margin-top: 0.5rem;
   }
   .sub_input label {
     margin-right: 1rem;
@@ -777,6 +778,10 @@ footer p {
   }
   .view-b_wrapper {
     padding: 2rem 0 10rem 0;
+  }
+
+  .message_sent p {
+    margin-left: 0;
   }
 }
 

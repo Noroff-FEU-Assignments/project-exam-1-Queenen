@@ -28,15 +28,17 @@ function validateForm(event) {
     checkLength(nameInput.value, 4) === false &&
     window.matchMedia("(min-width: 768px)")
   ) {
-    infoDiv.style.marginTop = "2rem";
+    infoDiv.style.marginTop = "4rem";
     button.style.marginTop = "1rem";
-    subscribe.style.height = "15rem";
-    subscribe.style.top = "250px";
+    subscribe.style.height = "18rem";
+    subscribe.style.top = "220px";
   }
+
   if (
     validateEmail(email.value) === true &&
     checkLength(nameInput.value, 4) === true
   ) {
+    subscribe.style.height = "auto";
     container.innerHTML = `<div class="loader"></div>`;
     setTimeout(() => {
       container.innerHTML = `<div class="subscribed">
